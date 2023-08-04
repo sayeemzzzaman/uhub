@@ -75,11 +75,11 @@
                 <div class="drawer lg:drawer-open">
 
                     <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-                    <div class="drawer-content flex flex-col items-center justify-center">
+                    {{-- <div class="drawer-content flex flex-col items-center justify-center">
                         <!-- Page content here -->
                         <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
-                    </div>
+                    </div> --}}
                     <div class="drawer-side">
                         <label for="my-drawer-2" class="drawer-overlay"></label>
                         <ul class="menu p-4 w-60 h-full bg-base-200 text-base-content">
@@ -100,7 +100,7 @@
                 </div>
 
                 {{-- cards --}}
-                <div class="grid grid-cols-4 gap-12 m-12">
+                <div class="grid grid-cols-4 gap-12 m-1">
                     {{-- card 1 --}}
 
 
@@ -135,6 +135,7 @@
                                 </div>
                         </form>
                     </dialog>
+
                     <button class="" onclick="my_modal_2.showModal()">
                         <div class="card card-compact  bg-base-100 shadow-orange-500 shadow-sm">
                             <figure><img src="storage/images/book2.png" alt="Core JAVA" /></figure>
@@ -164,6 +165,7 @@
                                 </div>
                         </form>
                     </dialog>
+
                     <button class="" onclick="my_modal_3.showModal()">
                         <div class="card card-compact  bg-base-100 shadow-orange-500 shadow-sm">
                             <figure><img src="storage/images/book3.png" alt="OOP" /></figure>
@@ -193,6 +195,7 @@
                                 </div>
                         </form>
                     </dialog>
+
                     <button class="" onclick="my_modal_4.showModal()">
                         <div class="card card-compact  bg-base-100 shadow-orange-500 shadow-sm">
                             <figure><img src="storage/images/book4.png" alt="OOP" /></figure>
@@ -223,6 +226,7 @@
                                 </div>
                         </form>
                     </dialog>
+
                     <button class="" onclick="my_modal_5.showModal()">
                         <div class="card card-compact  bg-base-100 shadow-orange-500 shadow-sm">
                             <figure><img src="storage/images/book1.png" alt="Intro to Algorithms" /></figure>
@@ -262,6 +266,7 @@
                             </div>
                         </div>
                     </button>
+
                     <dialog id="my_modal_6" class="modal">
                         <form method="dialog" class="modal-box max-w-[50%]">
                             <div class="flex justify-around items-center">
@@ -282,6 +287,7 @@
                                 </div>
                         </form>
                     </dialog>
+
                     <button class="" onclick="my_modal_7.showModal()">
                         <div class="card card-compact  bg-base-100 shadow-orange-500 shadow-sm">
                             <figure><img src="storage/images/book3.png" alt="OOP" /></figure>
@@ -311,6 +317,7 @@
                                 </div>
                         </form>
                     </dialog>
+
                     <button class="" onclick="my_modal_8.showModal()">
                         <div class="card card-compact  bg-base-100 shadow-orange-500 shadow-sm">
                             <figure><img src="storage/images/book4.png" alt="OOP" /></figure>

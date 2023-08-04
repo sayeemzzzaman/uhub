@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/library', function () {
-    return view('library-books');
+    return view('library');
 });
 
 // Route::get('/sign-in', function () {
@@ -40,13 +40,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Search Books
-Route::get('/books/searchBook', [BookController::class, 'searchBook'])->middleware('auth');
+// // Search Books
+// Route::get('/books/searchBook', [BookController::class, 'searchBook'])->middleware('auth');
 
-// requisition Books
-Route::post('/books/requisitionBook', [UserController::class, 'requisitionBook'])->middleware('auth');
+// // requisition Books
+// Route::post('/books/requisitionBook', [UserController::class, 'requisitionBook'])->middleware('auth');
 
-// Fine Calculation
-Route::post('/books/requisitionBook/fines', [UserController::class, 'fines'])->middleware('auth');
+// // Fine Calculation
+// Route::post('/books/requisitionBook/fines', [UserController::class, 'fines'])->middleware('auth');
 
 require __DIR__ . '/auth.php';
