@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('library-books');
 });
+
+// Route::get('/', function () {
+//     return view('library-books');
+// });
+
 // Route::get('/sign-in', function () {
 //     return view('sign-in');
 // });
@@ -35,4 +40,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
