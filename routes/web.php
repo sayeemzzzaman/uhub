@@ -15,15 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('library-books');
+    return view('welcome');
 });
-Route::get('/sign-in', function () {
-    return view('sign-in');
-});
+
+// Route::get('/library', function () {
+//     return view('library-books');
+// });
+
+// Route::get('/sign-in', function () {
+//     return view('sign-in');
+// });
 Route::get('/club-archive', function () {
     return view('club-archive');
 });
 
+// middleware codes
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -34,4 +40,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+// Search Books
+Route::get('/books/searchBook', [BookController::class, 'searchBook'])->middleware('auth');
+
+// requisition Books
+Route::post('/books/requisitionBook', [UserController::class, 'requisitionBook'])->middleware('auth');
+
+// Fine Calculation
+Route::post('/books/requisitionBook/fines', [UserController::class, 'fines'])->middleware('auth');
+
+require __DIR__ . '/auth.php';

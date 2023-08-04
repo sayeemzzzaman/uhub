@@ -5,18 +5,18 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Email Address -->
+        <!-- UIU id -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-input-label for="uiuid" :value="__('UIU ID')" />
+            <x-text-input id="uiuid" class="block mt-3 p-1 w-full" type="text" name="uiuid" :value="old('uiuid')" required autofocus autocomplete="uiuid" />
+            <x-input-error :messages="$errors->get('uiuid')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
+            <x-text-input id="password" class="block mt-1 p-1 w-full"
                             type="password"
                             name="password"
                             required autocomplete="current-password" />
