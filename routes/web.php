@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/library', function () {
-//     return view('library-books');
-// });
+Route::get('/library', function () {
+    return view('library-books');
+});
 
 // Route::get('/sign-in', function () {
 //     return view('sign-in');
