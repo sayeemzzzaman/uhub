@@ -34,4 +34,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Log In User
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+// Search Books
+Route::get('/books/searchBook', [BookController::class, 'searchBook'])->middleware('auth');
+
+// requisition Books
+Route::post('/books/requisitionBook', [UserController::class, 'requisitionBook'])->middleware('auth');
+
+// Fine Calculation
+Route::post('/books/requisitionBook/fines', [UserController::class, 'fines'])->middleware('auth');
+
 require __DIR__.'/auth.php';
