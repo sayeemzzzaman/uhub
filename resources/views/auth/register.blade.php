@@ -12,14 +12,14 @@
         <!-- uiuid -->
         <div>
             <x-input-label for="uiuid" :value="__('Uiuid')" />
-            <x-text-input id="uiuid" class="block mt-1 p-1 w-full" type="number" name="uiuid" :value="old('uiuid')" required autofocus autocomplete="uiuid" />
+            <x-text-input id="uiuid" class="block mt-1 p-1 w-full" type="text" name="uiuid" :value="old('uiuid')" required autofocus autocomplete="uiuid" />
             <x-input-error :messages="$errors->get('uiuid')" class="mt-2" />
         </div>
 
         <!-- account type -->
         <div>
             <x-input-label for="account_type" :value="__('Account_type')" />
-            <x-text-input id="account_type" class="block mt-1 p-1 w-full" type="text" name="account_type" value="student" required autofocus autocomplete="account_type" />
+            <x-text-input id="account_type" class="block mt-1 p-1 w-full" type="text" name="account_type" value="student" required autofocus readonly="readonly" autocomplete="account_type" />
             <x-input-error :messages="$errors->get('account_type')" class="mt-2" />
         </div>
 
