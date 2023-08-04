@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/', function () {
+// Route::get('/library', function () {
 //     return view('library-books');
 // });
 
