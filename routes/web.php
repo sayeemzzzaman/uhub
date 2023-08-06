@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +52,8 @@ Route::middleware('auth')->group(function () {
 // Route::post('/books/requisitionBook/fines', [UserController::class, 'fines'])->middleware('auth');
 
 require __DIR__ . '/auth.php';
+
+Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.admin_dashboard');
+Route::get('/student/dashboard', [StudentController::class, 'studentDashboard'])->name('student.student_dashboard');
+Route::get('/faculty/dashboard', [FacultyController::class, 'facultyDashboard'])->name('faculty.faculty_dashboard');
+Route::get('/librarian/dashboard', [LibrarianController::class, 'librarianDashboard'])->name('librarian.librarian_dashboard');
