@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class FacultyController extends Controller
 {
-    public function facultyController(){
+    public function facultyDashboard(){
         return view('faculty.faculty_dashboard');
     }
 }
