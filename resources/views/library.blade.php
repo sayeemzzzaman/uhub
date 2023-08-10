@@ -85,7 +85,8 @@
                         <ul class="menu p-4 w-60 h-full bg-base-200 text-base-content">
                             <!-- Sidebar content here -->
                             <div class="">
-                                <input type="text" placeholder="Search" class="input input-bordered border-orange-500 border-2 h-10 w-24 md:w-auto" />
+                                <input type="text" placeholder="Search"
+                                    class="input input-bordered border-orange-500 border-2 h-10 w-24 md:w-auto" />
                             </div>
                             <div class="text-orange-500 font-medium text-xl mt-4">
                                 <li><a href="">CSE</a></li>

@@ -26,9 +26,9 @@ Route::get('/library', function () {
     return view('library');
 });
 
-// Route::get('/sign-in', function () {
-//     return view('sign-in');
-// });
+Route::get('/faculty-member', function () {
+    return view('faculty/faculty-member');
+});
 Route::get('/club-archive', function () {
     return view('club-archive');
 });
