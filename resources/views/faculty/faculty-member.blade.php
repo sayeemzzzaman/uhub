@@ -152,7 +152,7 @@
                         <p class="text-gray-500">Vice Chancellor (In-Charge)</p>
                         <p>Email : kashem@uiu.ac.bd</p>
                         <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]"
-                            onclick="my_modal_5.showModal()"">Profile</button>
+                            onclick="my_modal_5.showModal()">Profile</button>
                         <dialog id="my_modal_5" class="modal">
                             <form method="dialog" class="modal-box flex items-center justify-between gap-12">
                                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -189,19 +189,19 @@
                         <p class="text-gray-500">Professor & Director - MSCSE</p>
                         <p>Email : motaharul@cse.uiu.ac.bd</p>
                         <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]"
-                            onclick="my_modal_4.showModal()"">Profile</button>
-                        <dialog id="my_modal_4" class="modal">
+                            onclick="my_modal_6.showModal()"">Profile</button>
+                        <dialog id="my_modal_6" class="modal">
                             <form method="dialog" class="modal-box flex items-center justify-between gap-12">
                                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                 <div>
-                                    <figure><img class="w-full" src="storage/images/nurul-huda.jpg"
-                                            alt="Nurul Huda" />
+                                    <figure><img class="w-full" src="storage/images/motaharul.jpg"
+                                            alt="Motaharul" />
                                     </figure>
 
                                 </div>
                                 <div>
                                     <h2 class="card-title">ISLAM, MD. MOTAHARUL</h2>
-                        <p class="text-gray-500">Professor & Director - MSCSE</p>
+                                    <p class="text-gray-500">Professor & Director - MSCSE</p>
                                     <p>Room: 432</p>
                                     <p>Email : motaharul@cse.uiu.ac.bd</p>
                                     <p>Contact No: 012345678</p>
@@ -224,36 +224,147 @@
                         <h2 class="card-title">HUDA, MOHAMMAD NURUL</h2>
                         <p class="text-gray-500">Professor & Head of the Dept.</p>
                         <p>Email : mnh@cse.uiu.ac.bd</p>
-                        <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]">Profile</button>
+                        <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]"
+                            onclick="my_modal_3.showModal()"">Profile</button>
+                        <dialog id="my_modal_3" class="modal">
+                            <form method="dialog" class="modal-box flex items-center justify-between gap-12">
+                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                <div>
+                                    <figure><img class="w-full" src="storage/images/nurul-huda.jpg" alt="Nurul Huda" />
+                                    </figure>
+
+                                </div>
+                                <div>
+                                    <h2 class="card-title">HUDA, MOHAMMAD NURUL</h2>
+                                    <p class="text-gray-500">Professor & Head of the Dept.</p>
+                                    <p>Room: 432</p>
+                                    <p>Email : mnh@cse.uiu.ac.bd</p>
+                                    <p>Contact No: 012345678</p>
+                                    <div class="flex justify-center items-center gap-3">
+                                        <button
+                                            class="btn btn-warning text-white font-normal bg-orange-500 mt-8 w-[50%]">Counselling
+                                            Schedule</button>
+                                        <button
+                                            class="btn btn-warning text-white font-normal bg-orange-500 mt-8 w-[50%]">Counselling
+                                            Form</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </dialog>
+
+
+
                     </div>
                 </div>
                 <div class="card card-compact w-80 bg-base-100 shadow-xl">
-                    <figure><img class="w-full" src="storage/images/nurul-huda.jpg" alt="Nurul Huda" /></figure>
+                    <figure><img class="w-full" src="storage/images/salekul.jpg" alt="Salekul" /></figure>
                     <div class="card-body">
-                        <h2 class="card-title">HUDA, MOHAMMAD NURUL</h2>
-                        <p class="text-gray-500">Professor & Head of the Dept.</p>
-                        <p>Email : mnh@cse.uiu.ac.bd</p>
-                        <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]">Profile</button>
+                        <h2 class="card-title">ISLAM, SALEKUL</h2>
+                        <p class="text-gray-500">Professor & Director - IQAC</p>
+                        <p>Email : salekul@cse.uiu.ac.bd</p>
+                        <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]"
+                            onclick="my_modal_4.showModal()">Profile</button>
+                        <dialog id="my_modal_4" class="modal">
+                            <form method="dialog" class="modal-box flex items-center justify-between gap-12">
+                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                <div>
+                                    <figure><img class="w-full" src="storage/images/salekul.jpg" alt="Salekul" />
+                                    </figure>
+
+                                </div>
+                                <div>
+                                    <h2 class="card-title">ISLAM, SALEKUL</h2>
+                                    <p class="text-gray-500">Professor & Director - IQAC</p>
+                                    <p>Room: 430</p>
+                                    <p>Email : salekul@cse.uiu.ac.bd</p>
+                                    <p>Contact No: 012345678</p>
+                                    <div class="flex justify-center items-center gap-3">
+                                        <button
+                                            class="btn btn-warning text-white font-normal bg-orange-500 mt-8 w-[50%]">Counselling
+                                            Schedule</button>
+                                        <button
+                                            class="btn btn-warning text-white font-normal bg-orange-500 mt-8 w-[50%]">Counselling
+                                            Form</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </dialog>
                     </div>
                 </div>
                 <div class="card card-compact w-80 bg-base-100 shadow-xl">
-                    <figure><img class="w-full" src="storage/images/nurul-huda.jpg" alt="Nurul Huda" /></figure>
+                    <figure><img class="w-full" src="storage/images/abul-kashem.jpg" alt="Nurul Huda" /></figure>
                     <div class="card-body">
-                        <h2 class="card-title">HUDA, MOHAMMAD NURUL</h2>
-                        <p class="text-gray-500">Professor & Head of the Dept.</p>
-                        <p>Email : mnh@cse.uiu.ac.bd</p>
-                        <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]">Profile</button>
+                        <h2 class="card-title">MIA, MD. ABUL KASHEM</h2>
+                        <p class="text-gray-500">Vice Chancellor (In-Charge)</p>
+                        <p>Email : kashem@uiu.ac.bd</p>
+                        <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]"
+                            onclick="my_modal_5.showModal()">Profile</button>
+                        <dialog id="my_modal_5" class="modal">
+                            <form method="dialog" class="modal-box flex items-center justify-between gap-12">
+                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                <div>
+                                    <figure><img class="w-full" src="storage/images/abul-kashem.jpg"
+                                            alt="Abul Kashem" />
+                                    </figure>
+
+                                </div>
+                                <div>
+                                    <h2 class="card-title">MIA, MD. ABUL KASHEM</h2>
+                                    <p class="text-gray-500">Vice Chancellor (In-Charge)</p>
+                                    <p>Room: 113</p>
+                                    <p>Email : kashem@uiu.ac.bd</p>
+
+                                    <p>Contact No: 012345678</p>
+                                    <div class="flex justify-center items-center gap-3">
+                                        <button
+                                            class="btn btn-warning text-white font-normal bg-orange-500 mt-8 w-[50%]">Counselling
+                                            Schedule</button>
+                                        <button
+                                            class="btn btn-warning text-white font-normal bg-orange-500 mt-8 w-[50%]">Counselling
+                                            Form</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </dialog>
                     </div>
                 </div>
                 <div class="card card-compact w-80 bg-base-100 shadow-xl">
-                    <figure><img class="w-full" src="storage/images/nurul-huda.jpg" alt="Nurul Huda" /></figure>
+                    <figure><img class="w-full" src="storage/images/motaharul.jpg" alt="Nurul Huda" /></figure>
                     <div class="card-body">
-                        <h2 class="card-title">HUDA, MOHAMMAD NURUL</h2>
-                        <p class="text-gray-500">Professor & Head of the Dept.</p>
-                        <p>Email : mnh@cse.uiu.ac.bd</p>
-                        <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]">Profile</button>
+                        <h2 class="card-title">ISLAM, MD. MOTAHARUL</h2>
+                        <p class="text-gray-500">Professor & Director - MSCSE</p>
+                        <p>Email : motaharul@cse.uiu.ac.bd</p>
+                        <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]"
+                            onclick="my_modal_6.showModal()"">Profile</button>
+                        <dialog id="my_modal_6" class="modal">
+                            <form method="dialog" class="modal-box flex items-center justify-between gap-12">
+                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                <div>
+                                    <figure><img class="w-full" src="storage/images/motaharul.jpg"
+                                            alt="Motaharul" />
+                                    </figure>
+
+                                </div>
+                                <div>
+                                    <h2 class="card-title">ISLAM, MD. MOTAHARUL</h2>
+                                    <p class="text-gray-500">Professor & Director - MSCSE</p>
+                                    <p>Room: 432</p>
+                                    <p>Email : motaharul@cse.uiu.ac.bd</p>
+                                    <p>Contact No: 012345678</p>
+                                    <div class="flex justify-center items-center gap-3">
+                                        <button
+                                            class="btn btn-warning text-white font-normal bg-orange-500 mt-8 w-[50%]">Counselling
+                                            Schedule</button>
+                                        <button
+                                            class="btn btn-warning text-white font-normal bg-orange-500 mt-8 w-[50%]">Counselling
+                                            Form</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </dialog>
                     </div>
                 </div>
+
             </div>
         </section>
     </main>
