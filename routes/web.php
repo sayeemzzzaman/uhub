@@ -6,6 +6,7 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LibrarianController;
+use App\Http\Controllers\backend\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +54,7 @@ Route::middleware('auth')->group(function () {
 // // Fine Calculation
 // Route::post('/books/requisitionBook/fines', [UserController::class, 'fines'])->middleware('auth');
 
-require __DIR__ . '/auth.php';
+
 
 // code::Dashboards
 // Route::get('/student/dashboard', [StudentController::class, 'studentDashboard'])->name('student.student_dashboard');
@@ -62,6 +63,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
    Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.admin_dashboard');
    Route::get('/admin/logout', [AdminController::class, 'adminLogout'])->name('admin.logout');
    Route::get('/admin/profile', [AdminController::class, 'adminProfile'])->name('admin.profile');
+   Route::post('/admin/profile/store', [AdminController::class, 'adminProfileStore'])->name('admin.profile.store');
 
 });
 
@@ -74,3 +76,15 @@ Route::middleware(['auth', 'role:faculty'])->group(function () {
     Route::get('/librarian/dashboard', [LibrarianController::class, 'librarianDashboard'])->name('librarian.librarian_dashboard');
 
  });
+
+ Route::middleware(['auth', 'role:admin'])->group(function () {
+
+    Route::controller(BookController::class)->group(function(){
+
+        Route::get('/admin/book/show', 'showBooks')->name('admin.book.showBooks');
+    });
+ });
+
+
+
+ require __DIR__ . '/auth.php';

@@ -1,7 +1,7 @@
 <nav class="sidebar">
     <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
-            Noble<span>UI</span>
+        <a href="{{ route('admin.admin_dashboard') }}" class="sidebar-brand">
+            <img src="{{ asset('images/uhub-logo.png') }}" alt="logo" width="150px" />
         </a>
         <div class="sidebar-toggler not-active">
             <span></span>
@@ -18,24 +18,24 @@
                     <span class="link-title">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item nav-category">web apps</li>
+            <li class="nav-item nav-category">Library</li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false"
                     aria-controls="emails">
-                    <i class="link-icon" data-feather="mail"></i>
-                    <span class="link-title">Email</span>
+                    <i class="link-icon" data-feather="book"></i>
+                    <span class="link-title">Books</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
                 <div class="collapse" id="emails">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="pages/email/inbox.html" class="nav-link">Inbox</a>
+                            <a href="{{ route('admin.book.showBooks') }}" class="nav-link">All Books</a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/email/read.html" class="nav-link">Read</a>
+                            <a href="pages/email/read.html" class="nav-link">Requisition</a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/email/compose.html" class="nav-link">Compose</a>
+                            <a href="pages/email/compose.html" class="nav-link">Study Resource</a>
                         </li>
                     </ul>
                 </div>
