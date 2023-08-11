@@ -225,8 +225,8 @@
                         <p class="text-gray-500">Professor & Head of the Dept.</p>
                         <p>Email : mnh@cse.uiu.ac.bd</p>
                         <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]"
-                            onclick="my_modal_3.showModal()"">Profile</button>
-                        <dialog id="my_modal_3" class="modal">
+                            onclick="my_modal_7.showModal()"">Profile</button>
+                        <dialog id="my_modal_7" class="modal">
                             <form method="dialog" class="modal-box flex items-center justify-between gap-12">
                                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                 <div>
@@ -263,8 +263,8 @@
                         <p class="text-gray-500">Professor & Director - IQAC</p>
                         <p>Email : salekul@cse.uiu.ac.bd</p>
                         <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]"
-                            onclick="my_modal_4.showModal()">Profile</button>
-                        <dialog id="my_modal_4" class="modal">
+                            onclick="my_modal_8.showModal()">Profile</button>
+                        <dialog id="my_modal_8" class="modal">
                             <form method="dialog" class="modal-box flex items-center justify-between gap-12">
                                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                 <div>
@@ -298,8 +298,8 @@
                         <p class="text-gray-500">Vice Chancellor (In-Charge)</p>
                         <p>Email : kashem@uiu.ac.bd</p>
                         <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]"
-                            onclick="my_modal_5.showModal()">Profile</button>
-                        <dialog id="my_modal_5" class="modal">
+                            onclick="my_modal_9.showModal()">Profile</button>
+                        <dialog id="my_modal_9" class="modal">
                             <form method="dialog" class="modal-box flex items-center justify-between gap-12">
                                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                 <div>
@@ -335,8 +335,8 @@
                         <p class="text-gray-500">Professor & Director - MSCSE</p>
                         <p>Email : motaharul@cse.uiu.ac.bd</p>
                         <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]"
-                            onclick="my_modal_6.showModal()"">Profile</button>
-                        <dialog id="my_modal_6" class="modal">
+                            onclick="my_modal_10.showModal()"">Profile</button>
+                        <dialog id="my_modal_10" class="modal">
                             <form method="dialog" class="modal-box flex items-center justify-between gap-12">
                                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                 <div>
