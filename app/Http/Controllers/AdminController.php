@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Notifications\Notification;
 
@@ -36,7 +37,7 @@ class AdminController extends Controller
 
         if ($request->file('uploadImage')) {
             $file = $request->file('uploadImage');
-            @unlink(public_path('uploads/admin_images/'.$data->photo));
+            @unlink(public_path('uploads/admin_images/' . $data->photo));
             $fileName = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('uploads/admin_images'), $fileName);
             $data['photo'] = $fileName;
@@ -52,7 +53,8 @@ class AdminController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function adminChangePassword(){
+    public function adminChangePassword()
+    {
         $id = Auth::user()->id;
         $profileData = User::find($id);
 
@@ -69,5 +71,39 @@ class AdminController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login');
+    }
+
+    public function adminUpdatePassword(Request $request)
+    {
+
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed'
+        ]);
+
+        if (!Hash::check($request->old_password, auth::user()->password)) {
+            $notification = array(
+                'message' => 'Old password do not match',
+                'alert-type' => 'error'
+            );
+            return back()->with($notification);
+        }
+
+
+        User::find(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        // User::whereId(auth()->user()->id)->update([
+        //     'password' => Hash::make($request->new_password)
+        // ]);
+
+
+        $notification = array(
+            'message' => 'Password updated successfully',
+            'alart-type' => 'success'
+        );
+
+        return back()->with($notification);
     }
 }

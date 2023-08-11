@@ -46,6 +46,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
    Route::get('/admin/profile', [AdminController::class, 'adminProfile'])->name('admin.profile');
    Route::post('/admin/profile/store', [AdminController::class, 'adminProfileStore'])->name('admin.profile.store');
    Route::get('/admin/change/password', [AdminController::class, 'adminChangePassword'])->name('admin.change.password');
+   Route::post('/admin/update/password', [AdminController::class, 'adminUpdatePassword'])->name('admin.update.password');
 
 });
 
@@ -57,6 +58,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(BookController::class)->group(function(){
 
         Route::get('/admin/book/show', 'showBooks')->name('admin.book.showBooks');
+        Route::get('/admin/book/add', 'addBook')->name('admin.book.add');
+        Route::post('/admin/book/store', 'storeBook')->name('admin.book.store');
+        Route::get('/admin/book/edit/{id}', 'editBook')->name('admin.book.edit');
+        Route::post('/admin/book/update', 'updateBook')->name('admin.book.update');
+        Route::post('/admin/book/delete/{id}', 'deleteBook')->name('admin.book.delete');
     });
  });
 

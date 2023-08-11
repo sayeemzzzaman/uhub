@@ -12,6 +12,7 @@
 
     <title>Student - uhub</title>
 
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     <link rel="shortcut icon" href="storage/images/uhub-logo.png" type="image/x-icon">
+
     {{-- tailwind --}}
     @vite('resources/css/app.css')
 
