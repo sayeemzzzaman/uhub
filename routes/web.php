@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LibrarianController;
 use App\Http\Controllers\RequisitionController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\backend\BookController;
 
 /*
@@ -67,7 +68,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
  });
 
- /// Admin Group Controller Links :: Book
+ /// Admin Group Controller Links :: requisition
 
  Route::middleware(['auth', 'role:admin'])->group(function () {
 
@@ -82,6 +83,31 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
  });
 
+//  Route::middleware(['auth', 'role:admin'])->group(function () {
+
+//     Route::controller(RequisitionController::class)->group(function(){
+
+//         Route::get('/admin/requisition/show', 'showRequisitions')->name('admin.requisition.show');
+//         Route::get('/admin/requisition/add', 'addRequisition')->name('admin.requisition.add');
+//         Route::post('/admin/requisition/store', 'storeRequisition')->name('admin.requisition.store');
+//         Route::get('/admin/requisition/edit/{id}', 'editRequisition')->name('admin.requisition.edit');
+//         Route::post('/admin/requisition/update', 'updateRequisition')->name('admin.requisition.update');
+//         Route::get('/admin/requisition/delete/{id}', 'deleteRequisition')->name('admin.requisition.delete');
+//     });
+//  });
+
+ Route::middleware(['auth', 'role:admin'])->group(function () {
+
+    Route::controller(ContactController::class)->group(function(){
+
+        Route::get('/admin/contact/show', 'showContact')->name('admin.contact.show');
+        Route::get('/admin/contact/add', 'addContact')->name('admin.contact.add');
+        Route::post('/admin/contact/store', 'storeContact')->name('admin.contact.store');
+        Route::get('/admin/contact/edit/{id}', 'editContact')->name('admin.contact.edit');
+        Route::post('/admin/contact/update', 'updateContact')->name('admin.contact.update');
+        Route::get('/admin/contact/delete/{id}', 'deleteContact')->name('admin.contact.delete');
+    });
+ });
 
 
  require __DIR__ . '/auth.php';
@@ -133,13 +159,13 @@ Route::middleware('auth')->group(function () {
 //  });
 
 
-// Route::get('/library', function () {
-//     return view('library');
-// });
+Route::get('/library', function () {
+    return view('library');
+});
 
-// Route::get('/faculty-member', function () {
-//     return view('faculty/faculty-member');
-// });
-// Route::get('/club-archive', function () {
-//     return view('club-archive');
-// });
+Route::get('/faculty-member', function () {
+    return view('faculty/faculty-member');
+});
+Route::get('/club-archive', function () {
+    return view('club-archive');
+});

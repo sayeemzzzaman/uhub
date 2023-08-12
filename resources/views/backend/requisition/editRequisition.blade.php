@@ -1,8 +1,5 @@
 @extends('admin.admin_dashboard')
 @section('admin')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-
     <div class="page-content">
         <div class="row profile-body">
             <!-- middle wrapper start -->
@@ -11,59 +8,61 @@
                     <div class="col-md-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
-                                <h6 class="card-title">Add Book</h6>
+                                <h6 class="card-title">Edit Requisition</h6>
 
-                                <form class="forms-sample" method="POST" action=" {{ route('admin.book.update') }} " enctype="multipart/form-data">
+
+                                <form class="forms-sample" method="POST" action=" {{ route('admin.requisition.update') }} ">
                                     @csrf
 
-                                    <input name="id" type="text" value="{{ $book->id }}" hidden>
+                                    <input name="id" type="text" value="{{ $requisition->id }}" hidden>
 
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input name="name" type="text" value="{{ $book->name }}" class="form-control @error('name') is-valid @enderror">
-                                        @error('name')
+                                        <label for="requisitionsId" class="form-label">Requisitions Id</label>
+                                        <input name="requisitionsId" type="text"
+                                            value="{{ $requisition->requisitionsId }}"
+                                            class="form-control @error('requisitionsId') is-valid @enderror">
+                                        @error('requisitionsId')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="studentID" class="form-label">Student ID </label>
+                                        <input name="studentID" type="text"
+                                            value="{{ $requisition->requisitionsId }}"
+                                            class="form-control @error('studentID') is-valid @enderror">
+                                        @error('studentID')
                                             <span class="text-danger"> {{ $message }} </span>
                                         @enderror
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="auther" class="form-label">Auther</label>
-                                        <input name="auther" type="text" value="{{ $book->Auther }}" class="form-control @error('auther') is-valid @enderror">
-                                        @error('auther')
+                                        <label for="bookID" class="form-label">Book ID</label>
+                                        <input name="bookID" type="text" value="{{ $requisition->bookID }}"
+                                            class="form-control @error('bookID') is-valid @enderror">
+                                        @error('bookID')
                                             <span class="text-danger"> {{ $message }} </span>
                                         @enderror
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="description" class="form-label">Description</label>
-                                        <input name="description" type="text" value="{{ $book->Description }}" class="form-control @error('description') is-valid @enderror">
-                                        @error('description')
+                                        <label for="bookName" class="form-label">Book Name</label>
+                                        <input name="bookName" type="text" value="{{ $requisition->bookName }}"
+                                            class="form-control @error('bookName') is-valid @enderror">
+                                        @error('bookName')
                                             <span class="text-danger"> {{ $message }} </span>
                                         @enderror
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="shelf" class="form-label">Shelf</label>
-                                        <input name="shelf" type="text" value="{{ $book->Shelf }}" class="form-control @error('shelf') is-valid @enderror">
-                                        @error('description')
+                                        <label for="status" class="form-label">status</label>
+                                        <input name="status" type="text" value="{{ $requisition->status }}"
+                                            class="form-control @error('status') is-valid @enderror">
+                                        @error('status')
                                             <span class="text-danger"> {{ $message }} </span>
                                         @enderror
                                     </div>
 
-                                    {{-- book image --}}
-
-                                    <div class="mb-3">
-                                        <label class="form-label" for="photo">Book photo</label>
-                                        <input class="form-control" name="bookImageUpload" type="file" id="bookImageUpload">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for=""></label>
-                                        <img id="bookImageShow" class="wd-70"
-                                            src=" {{ !empty($bookData->photo) ? url('uploads/book_images/' . $bookData->photo) : url('uploads/no_image.jpg') }}"
-                                            alt="profile">
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary me-2">Update Book</button>
+                                    <button type="submit" class="btn btn-primary me-2">Update Requisition</button>
                                 </form>
 
                             </div>
@@ -75,15 +74,4 @@
         </div>
 
     </div>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#bookImageUpload').change(function(e) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#bookImageShow').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(e.target.files['0']);
-            });
-        });
-    </script>
 @endsection

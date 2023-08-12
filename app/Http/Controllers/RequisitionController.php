@@ -16,30 +16,36 @@ class RequisitionController extends Controller
     {
         return view('backend.requisition.addRequisition');
     }
+
     public function storeRequisition(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'auther' => 'required',
-            'description' => 'required',
-            'shelf' => 'required',
 
+        $request->validate([
+            'requisitionsId' => 'required',
+            'bookID' => 'required',
+            'studentID' => 'required',
+            'bookName' => 'required',
+            'status' => 'required'
         ]);
 
         Requisition::insert([
-            'name' => $request->name,
-            'auther' => $request->auther,
-            'description' => $request->description,
-            'shelf' => $request->shelf,
+            'requisitionsId' => $request->requisitionsId,
+            'bookID' => $request->bookID,
+            'studentID' => $request->studentID,
+            'bookName' => $request->bookName,
+            'status' => $request->status,
         ]);
+
+
 
         $notification = array(
             'message' => 'Requisition added successfuly',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('admin.requisition.showRequisition')->with($notification);
+        return redirect()->route('admin.requisition.show')->with($notification);
     }
+
     public function editRequisition($id)
     {
         $requisition = Requisition::findOrFail($id);
@@ -49,11 +55,20 @@ class RequisitionController extends Controller
     {
         $rid = $request->id;
 
+        $request->validate([
+            'requisitionsId' => 'required',
+            'bookID' => 'required',
+            'studentID' => 'required',
+            'bookName' => 'required',
+            'status' => 'required'
+        ]);
+
         Requisition::findOrFail($rid)->update([
-            'name' => $request->name,
-            'auther' => $request->auther,
-            'description' => $request->description,
-            'shelf' => $request->shelf,
+            'requisitionsId' => $request->requisitionsId,
+            'bookID' => $request->bookID,
+            'studentID' => $request->studentID,
+            'bookName' => $request->bookName,
+            'status' => $request->status,
         ]);
 
         $notification = array(
@@ -61,7 +76,7 @@ class RequisitionController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('admin.requisition.showRequisition')->with($notification);
+        return redirect()->route('admin.requisition.show')->with($notification);
     }
     public function deleteRequisition($id)
     {
