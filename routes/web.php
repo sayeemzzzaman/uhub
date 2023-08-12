@@ -6,6 +6,7 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LibrarianController;
+use App\Http\Controllers\RequisitionController;
 use App\Http\Controllers\backend\BookController;
 
 /*
@@ -51,7 +52,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 
-/// Admin Group Controller Links
+/// Admin Group Controller Links :: Book
 
  Route::middleware(['auth', 'role:admin'])->group(function () {
 
@@ -62,7 +63,22 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/admin/book/store', 'storeBook')->name('admin.book.store');
         Route::get('/admin/book/edit/{id}', 'editBook')->name('admin.book.edit');
         Route::post('/admin/book/update', 'updateBook')->name('admin.book.update');
-        Route::post('/admin/book/delete/{id}', 'deleteBook')->name('admin.book.delete');
+        Route::get('/admin/book/delete/{id}', 'deleteBook')->name('admin.book.delete');
+    });
+ });
+
+ /// Admin Group Controller Links :: Book
+
+ Route::middleware(['auth', 'role:admin'])->group(function () {
+
+    Route::controller(RequisitionController::class)->group(function(){
+
+        Route::get('/admin/requisition/show', 'showRequisitions')->name('admin.requisition.show');
+        Route::get('/admin/requisition/add', 'addRequisition')->name('admin.requisition.add');
+        Route::post('/admin/requisition/store', 'storeRequisition')->name('admin.requisition.store');
+        Route::get('/admin/requisition/edit/{id}', 'editRequisition')->name('admin.requisition.edit');
+        Route::post('/admin/requisition/update', 'updateRequisition')->name('admin.requisition.update');
+        Route::get('/admin/requisition/delete/{id}', 'deleteRequisition')->name('admin.requisition.delete');
     });
  });
 

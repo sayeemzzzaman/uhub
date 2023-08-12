@@ -82,7 +82,7 @@ class BookController extends Controller
     }
     public function deleteBook($id)
     {
-        // Book::findOrFail($id)->delete();
+        Book::findOrFail($id)->delete();
 
         $notification = array(
             'message' => 'Book Deleted successfuly',

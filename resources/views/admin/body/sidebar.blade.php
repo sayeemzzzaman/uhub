@@ -32,7 +32,7 @@
                             <a href="{{ route('admin.book.showBooks') }}" class="nav-link">All Books</a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/email/read.html" class="nav-link">Requisition</a>
+                            <a href="{{ route('admin.requisition.show') }}" class="nav-link">Requisition</a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/email/compose.html" class="nav-link">Study Resource</a>
