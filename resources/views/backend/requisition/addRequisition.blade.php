@@ -53,19 +53,14 @@
                                         @enderror
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label for="bookName" class="form-label">Book Name</label>
-                                        <input name="bookName" type="text"
-                                            class="form-control @error('Book Name') is-valid @enderror">
-                                        @error('bookName')
-                                            <span class="text-danger"> {{ $message }} </span>
-                                        @enderror
-                                    </div>
 
                                     <div class="mb-3">
                                         <label for="status" class="form-label">Status</label>
-                                        <input name="status" type="text"
-                                            class="form-control @error('status') is-valid @enderror">
+                                        <select name="status" class="form-select" id="status">
+                                            <option>pending</option>
+                                            <option>accepted</option>
+                                            <option>rejected</option>
+                                        </select>
                                         @error('status')
                                             <span class="text-danger"> {{ $message }} </span>
                                         @enderror

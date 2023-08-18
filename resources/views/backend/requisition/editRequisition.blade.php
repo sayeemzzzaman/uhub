@@ -28,7 +28,7 @@
                                     <div class="mb-3">
                                         <label for="studentID" class="form-label">Student ID </label>
                                         <input name="studentID" type="text"
-                                            value="{{ $requisition->requisitionsId }}"
+                                            value="{{ $requisition->studentID }}"
                                             class="form-control @error('studentID') is-valid @enderror">
                                         @error('studentID')
                                             <span class="text-danger"> {{ $message }} </span>
@@ -54,12 +54,22 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="status" class="form-label">status</label>
-                                        <input name="status" type="text" value="{{ $requisition->status }}"
-                                            class="form-control @error('status') is-valid @enderror">
+                                        <label for="status" class="form-label">Status</label>
+                                        <select name="status" class="form-select" id="status">
+                                            <option>pending</option>
+                                            <option>accepted</option>
+                                            <option>rejected</option>
+                                        </select>
                                         @error('status')
                                             <span class="text-danger"> {{ $message }} </span>
                                         @enderror
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="status" class="form-label">status</label>
+                                        <input name="status" type="text" value="{{ $requisition->status }}"
+                                            class="form-control @error('status') is-valid @enderror">
+
                                     </div>
 
                                     <button type="submit" class="btn btn-primary me-2">Update Requisition</button>

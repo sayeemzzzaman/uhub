@@ -36,7 +36,7 @@
                 <li class="hover:text-orange-400"><a href="{{ route('student.library.show') }}">Library</a></li>
                 <li class="hover:text-orange-400"><a href="{{ route('student.project.show') }}">Scholarly Works</a></li>
                 <li class="hover:text-orange-400"><a href="{{ route('student.club.show') }}">Club Archive</a></li>
-                <li class="hover:text-orange-400 pr-4" tabindex="0" >
+                <li class="hover:text-orange-400 pr-4 z-10" tabindex="0" >
                     <details>
                         <summary>Staff Info</summary>
                         <ul class="p-2 bg-neutral text-white">
@@ -50,17 +50,21 @@
         </div>
         <div class="navbar-end mr-12">
             <div class="dropdown dropdown-end">
-                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                    <div class="w-10 rounded-full">
-                        <img
-                            src="{{ !empty($profileData->photo) ? url('uploads/admin_images/' . $profileData->photo) : url('uploads/no_image.jpg') }}" />
-                    </div>
-                </label>
+                <div class="flex">
+                    <p class="text-white text-center my-auto mr-4" >{{ $profileData->name }}</p>
+                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                            <img
+                                src="{{ !empty($profileData->photo) ? url('uploads/admin_images/' . $profileData->photo) : url('uploads/no_image.jpg') }}" />
+                        </div>
+                    </label>
+                </div>
+
                 <ul tabindex="0"
                     class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-neutral text-white rounded-box w-52">
 
-                    <li class="pb-2 pt-2 text-center">{{ $profileData->name }}</li>
-                    <li class="pb-4 text-center">{{ $profileData->uiuid }}</li>
+                    <li class="pb-2 pt-2 text-center">{{ $profileData->uiuid }}</li>
+                    <li class="pb-4 text-center">{{ $profileData->role }}</li>
                     <li class="hover:text-orange-400" ><a>Settings</a></li>
                     <li class="hover:text-orange-400" ><a href="{{ route('student.logout') }}">Logout</a></li>
                 </ul>

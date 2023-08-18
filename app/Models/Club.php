@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class Club extends Model
 {
     use HasFactory;
     protected $guarded = [];
@@ -14,8 +14,8 @@ class Contact extends Model
     {
         if ($filters['search'] ?? false) {
             $query->where('name', 'like', '%' . request('search') . '%')
-                ->orWhere('email', 'like', '%' . request('search') . '%')
                 ->orWhere('description', 'like', '%' . request('search') . '%');
         }
+
     }
 }

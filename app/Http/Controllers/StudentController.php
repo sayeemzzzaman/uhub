@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Contact;
+use App\Models\Requisition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -10,12 +12,34 @@ use Illuminate\Http\RedirectResponse;
 class StudentController extends Controller
 {
     public function studentDashboard(){
-        return view('student.student_index');
+        $studentId = Auth::user()->uiuid;
+        return view('student.student_index', [
+            'requisitions' => Requisition::where('studentID', $studentId)
+                ->latest()
+                ->get()
+        ]);
+
     }
 
     public function showLibrary(){
         return view('student.student_library_show', [
-            'books' => Book::latest()->filter(request(['search']))->paginate(6)
+            'books' => Book::latest()->filter(request(['search']))->paginate(10)
+        ]);
+
+    }
+    public function showFaculty(){
+
+        return view('student.student_faculty_show', [
+            'contacts' => Contact::where('designation', 'Faculty')->latest()->filter(request(['search']))->paginate(10),
+
+        ]);
+
+    }
+    public function showStaffOther(){
+
+        return view('student.student_stuff_show', [
+            'contacts' => Contact::whereIn('designation', ['Lab attendent', 'TA'])->latest()->filter(request(['search']))->paginate(10),
+
         ]);
 
     }
