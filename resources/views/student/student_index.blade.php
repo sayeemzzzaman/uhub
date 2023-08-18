@@ -5,7 +5,7 @@
             Welcome to dashboard
         </div>
         <div class="overflow-x-auto col-span-2 bg-neutral-100 rounded-md px-4">
-            <h2 class="p-4">Requisition status</h2>
+            <h2 class="p-4">Requisition History</h2>
             <table class="table">
                 <!-- head -->
                 <thead>

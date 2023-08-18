@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Club;
 use App\Models\Contact;
 use App\Models\Requisition;
 use Illuminate\Http\Request;
@@ -39,6 +40,14 @@ class StudentController extends Controller
 
         return view('student.student_stuff_show', [
             'contacts' => Contact::whereIn('designation', ['Lab attendent', 'TA'])->latest()->filter(request(['search']))->paginate(10),
+
+        ]);
+
+    }
+    public function showClub(){
+
+        return view('student.student_club_show', [
+            'clubs' => Club::latest()->filter(request(['search']))->paginate(10),
 
         ]);
 

@@ -1,7 +1,7 @@
 @extends('student.student_dashboard')
 @section('student')
     {{-- search --}}
-    <form action="/student/library/show">
+    <form action="/student/faculty/faculty">
         <div class="relative border-2 border-gray-100 mx-64 my-6 rounded-lg">
             <div class="absolute top-4 left-4">
                 <i class=" fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>

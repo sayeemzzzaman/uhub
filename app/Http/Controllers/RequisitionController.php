@@ -51,6 +51,26 @@ class RequisitionController extends Controller
         $requisition = Requisition::findOrFail($id);
         return view('backend.requisition.editRequisition', compact('requisition'));
     }
+
+    public function quickUpdateRequisition(Request $request)
+    {
+        $rid = $request->id;
+
+        $request->validate([
+            'status' => 'required'
+        ]);
+
+        Requisition::findOrFail($rid)->update([
+            'status' => $request->status,
+        ]);
+
+        $notification = array(
+            'message' => 'Requisition status Updated successfuly',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.admin_dashboard')->with($notification);
+    }
     public function updateRequisition(Request $request)
     {
         $rid = $request->id;

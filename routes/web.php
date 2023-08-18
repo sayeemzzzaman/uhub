@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LibrarianController;
 use App\Http\Controllers\RequisitionController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\backend\BookController;
 
 /*
@@ -82,6 +83,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admin/requisition/edit/{id}', 'editRequisition')->name('admin.requisition.edit');
         Route::post('/admin/requisition/update', 'updateRequisition')->name('admin.requisition.update');
         Route::get('/admin/requisition/delete/{id}', 'deleteRequisition')->name('admin.requisition.delete');
+
+        Route::post('/admin/requisition/quickUpdate', 'quickUpdateRequisition')->name('admin.requisition.quickUpdate');
+
     });
 });
 
@@ -100,6 +104,21 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/admin/contact/update', 'updateContact')->name('admin.contact.update');
         Route::post('/admin/contact/update/counselingUpdate', 'updateCounselingHour')->name('admin.contact.updateCounselingHour');
         Route::get('/admin/contact/delete/{id}', 'deleteContact')->name('admin.contact.delete');
+    });
+});
+
+/// Club::links and group controller and middleware
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+
+    Route::controller(ClubController::class)->group(function () {
+
+        Route::get('/admin/club/show', 'showclubs')->name('admin.club.showclubs');
+        Route::get('/admin/club/add', 'addclub')->name('admin.club.add');
+        Route::post('/admin/club/store', 'storeclub')->name('admin.club.store');
+        Route::get('/admin/club/edit/{id}', 'editclub')->name('admin.club.edit');
+        Route::post('/admin/club/update', 'updateclub')->name('admin.club.update');
+        Route::get('/admin/club/delete/{id}', 'deleteclub')->name('admin.club.delete');
     });
 });
 

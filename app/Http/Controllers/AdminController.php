@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Requisition;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,11 @@ class AdminController extends Controller
 {
     public function adminDashboard()
     {
-        return view('admin.index');
+
+        return view('admin.index',[
+            'requisitions' => Requisition::where('status','pending')
+            ->latest()->get()
+        ]);
     }
 
     public function adminProfile()
