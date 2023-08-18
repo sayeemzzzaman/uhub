@@ -5,8 +5,8 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">All Contacts</h6>
-                        <a href="{{ route('admin.contact.add') }}" class="btn btn-inverse-info mb-3 px-4">Add Book</a>
+                        <h6 class="card-title">Faculty Contacts</h6>
+                        <a href="{{ route('admin.contact.add') }}" class="btn btn-inverse-info mb-3 px-4">Add Contact</a>
                         <div class="table-responsive">
                             <table id="dataTableExample" class="table">
                                 <thead>
@@ -20,20 +20,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($books as $book)
+                                    @foreach ($contacts as $contact)
                                         <tr>
                                             <td><img class="wd-50"
-                                                    src=" {{ !empty($book->photo) ? url('uploads/book_images/' . $book->photo) : url('uploads/no_image.jpg') }}"
-                                                    alt="Book">
+                                                    src=" {{ !empty($contact->image) ? url('uploads/contact_images/' . $contact->image) : url('uploads/no_image.jpg') }}"
+                                                    alt="contact">
                                             </td>
-                                            <td>{{ $book->name }}</td>
-                                            <td>{{ $book->auther }}</td>
-                                            <td>{{ $book->shelf }}</td>
+                                            <td>{{ $contact->name }}</td>
+                                            <td>{{ $contact->designation }}</td>
+                                            <td>{{ $contact->email }}</td>
                                             <td>
-                                                <a href="{{ route('admin.book.edit', $book->id) }}"
-                                                    class="btn btn-inverse-warning px-4">Edit</a>
-                                                <a href="{{ route('admin.book.delete', $book->id) }}"
-                                                    class="btn btn-inverse-danger px-4" id="delete">Delete</a>
+                                                <a href="{{ route('admin.contact.edit', $contact->id) }}"
+                                                    class="btn btn-inverse-warning px-3">Edit</a>
+                                                <a href="{{ route('admin.contact.delete', $contact->id) }}"
+                                                    class="btn btn-inverse-danger px-3" id="delete">Delete</a>
+                                                <a href="{{ route('admin.contact.counselingHour', $contact->id) }}"
+                                                    class="btn btn-inverse-info px-3" >Counseling Hour</a>
                                             </td>
                                         </tr>
                                     @endforeach

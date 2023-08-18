@@ -58,10 +58,6 @@
 
             @yield('admin')
 
-            <!-- partial:partials/_footer.html -->
-            @include('admin.body.footer')
-            <!-- partial -->
-
         </div>
     </div>
 

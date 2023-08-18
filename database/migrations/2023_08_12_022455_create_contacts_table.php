@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('namre')->nullable();
-            $table->string('image');
-            $table->string('designation');
+            $table->string('name')->nullable();
+            $table->string('image')->nullable();
+            $table->enum('designation', ['Faculty','Lab attendent', 'TA'])->default('TA');
             $table->string('email');
-            $table->string('description');
+            $table->longText('description')->nullable();
+            $table->longText('counseling_hour')->nullable();
             $table->timestamps();
         });
     }

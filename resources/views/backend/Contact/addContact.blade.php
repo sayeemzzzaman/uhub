@@ -25,43 +25,42 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="auther" class="form-label">Auther</label>
-                                        <input name="auther" type="text" class="form-control @error('auther') is-valid @enderror">
-                                        @error('auther')
+                                        <label for="email" class="form-label">Email</label>
+                                        <input name="email" type="email" class="form-control @error('email') is-valid @enderror">
+                                        @error('email')
                                             <span class="text-danger"> {{ $message }} </span>
                                         @enderror
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="description" class="form-label">Description</label>
-                                        <input name="description" type="text" class="form-control @error('description') is-valid @enderror">
-                                        @error('description')
-                                            <span class="text-danger"> {{ $message }} </span>
-                                        @enderror
-                                    </div>
+										<label for="designation" class="form-label">Designation</label>
+										<select name="designation" class="form-select" id="exampleFormControlSelect1">
+											<option selected="" disabled="">Select Designation</option>
+											<option>Faculty</option>
+											<option>Lab attendent</option>
+											<option>TA</option>
+										</select>
+									</div>
 
                                     <div class="mb-3">
-                                        <label for="shelf" class="form-label">Shelf</label>
-                                        <input name="shelf" type="text" class="form-control @error('shelf') is-valid @enderror">
-                                        @error('description')
-                                            <span class="text-danger"> {{ $message }} </span>
-                                        @enderror
-                                    </div>
+										<label for="description" class="form-label">Description</label>
+										<textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+									</div>
 
                                     {{-- book image --}}
 
                                     <div class="mb-3">
-                                        <label class="form-label" for="photo">Book photo</label>
-                                        <input class="form-control" name="bookImageUpload" type="file" id="bookImageUpload">
+                                        <label class="form-label" for="photo">Contact Photo</label>
+                                        <input class="form-control" name="contactImageUpload" type="file" id="contactImageUpload">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for=""></label>
                                         <img id="bookImageShow" class="wd-70"
-                                            src=" {{ !empty($bookData->photo) ? url('uploads/book_images/' . $bookData->photo) : url('uploads/no_image.jpg') }}"
+                                            src=" {{ !empty($contact->image) ? url('uploads/contact_images/' . $contact->image) : url('uploads/no_image.jpg') }}"
                                             alt="profile">
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary me-2">Add Book</button>
+                                    <button type="submit" class="btn btn-primary me-2">Add contact</button>
                                 </form>
 
                             </div>
@@ -75,7 +74,7 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#bookImageUpload').change(function(e) {
+            $('#contactImageUpload').change(function(e) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     $('#bookImageShow').attr('src', e.target.result);

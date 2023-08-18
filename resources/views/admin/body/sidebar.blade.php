@@ -55,13 +55,13 @@
                             {{-- <a href="{{ route('admin.contact.show') }}" class="nav-link">All Information</a> --}}
                         </li>
                         <li class="nav-item">
-                            <a href="pages/ui-components/alerts.html" class="nav-link">Faculty Information</a>
+                            <a href="{{ route('admin.contact.show') }}" class="nav-link">Faculty Information</a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/ui-components/badges.html" class="nav-link">TA Information</a>
+                            <a href="{{ route('admin.contact.showTA') }}" class="nav-link">TA Information</a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/ui-components/breadcrumbs.html" class="nav-link">Lab attendant</a>
+                            <a href="{{ route('admin.contact.showLA') }}" class="nav-link">Lab attendant</a>
                         </li>
 
                     </ul>
