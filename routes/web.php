@@ -38,6 +38,7 @@ Route::middleware(['auth', 'role:student'])->group(function () {
         Route::get('/student/project/show', 'showProject')->name('student.project.show');
         Route::get('/student/club/show', 'showClub')->name('student.club.show');
 
+        Route::post('/student/library/quickReque', 'quickRequeRequisition')->name('student.library.quickReque');
 
 
         Route::get('/student/logout', 'studentLogout')->name('student.logout');
@@ -45,7 +46,7 @@ Route::middleware(['auth', 'role:student'])->group(function () {
 });
 
 
-/// Admin Middleware Links
+// Admin Middleware Links
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.admin_dashboard');

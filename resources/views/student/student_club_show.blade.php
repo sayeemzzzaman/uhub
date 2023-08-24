@@ -17,7 +17,7 @@
     </form>
 
     <div class="flex justify-center">
-        <div class="grid grid-cols-5 gap-12 mx-24">
+        <div class="grid grid-cols-3 gap-12 mx-24">
             {{-- modal --}}
             <!-- Open the modal using ID.showModal() method -->
             @foreach ($clubs as $club)
@@ -36,7 +36,8 @@
 
                 </button>
                 <dialog id="mod{{ $club->id }}" class="modal">
-                    <form method="dialog" class="modal-box max-w-[50%]">
+                    {{-- <form method="dialog" class="modal-box max-w-[50%]"> --}}
+                    <div class="modal-box max-w-[50%]">
                         <div class="flex justify-around items-center">
                             <figure>
                                 <img class="w-40 h-100"
@@ -54,7 +55,8 @@
                                 <!-- if there is a button in form, it will close the modal -->
                                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                             </div>
-                    </form>
+                        </div>
+                    </div>
                 </dialog>
             @endforeach
 

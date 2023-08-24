@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Club;
+use App\Models\User;
 use App\Models\Contact;
 use App\Models\Requisition;
 use Illuminate\Http\Request;
@@ -51,6 +52,28 @@ class StudentController extends Controller
 
         ]);
 
+    }
+
+    public function quickRequeRequisition(Request $request)
+    {
+
+
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+
+        Requisition::insert([
+            'requisitionsId' => rand(),
+            'bookID' => $request->bookID,
+            'studentID' => $profileData->uiuid,
+            'bookName' => $request->bookName,
+        ]);
+
+        $notification = array(
+            'message' => 'Requisition added successfuly',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 
 

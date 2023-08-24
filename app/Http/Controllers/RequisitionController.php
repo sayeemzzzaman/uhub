@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Requisition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RequisitionController extends Controller
 {
@@ -52,6 +54,8 @@ class RequisitionController extends Controller
         return view('backend.requisition.editRequisition', compact('requisition'));
     }
 
+    
+
     public function quickUpdateRequisition(Request $request)
     {
         $rid = $request->id;
@@ -71,6 +75,8 @@ class RequisitionController extends Controller
 
         return redirect()->route('admin.admin_dashboard')->with($notification);
     }
+
+
     public function updateRequisition(Request $request)
     {
         $rid = $request->id;
