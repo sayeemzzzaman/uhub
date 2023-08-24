@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UHUB</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="flex flex-col  lg:flex-row mt-6 mx-6">
+        <div class="grid gap-2 flex-grow card rounded-box ">
+
+            <!-- left first card -->
+            <div class="mb-7 bg-base-300 pt-7 px-7 pb-20 rounded-e-lg">
+                <h3 class="font-bold text-2xl">My Projects</h3>
+                <hr class="border-b-orange-500 border-b-2 w-1/2 my-2">
+                <ul>
+                    <li class="hover:text-orange-500"><a href="">Restaurant Management System</a></li>
+                    <li class="hover:text-orange-500"><a href="">Medical Management System</a></li>
+                    <li class="hover:text-orange-500"><a href="">Robotics Management System</a></li>
+                </ul>
+            </div>
+            <!-- left second card -->
+            <div class="bg-base-300 mb-7 pt-7 px-7 pb-20 rounded-lg">
+                <h3 class="border-b font-bold text-2xl">My Contribution</h3>
+                <hr class="border-b-orange-500 border-b-2 w-1/2 my-2">
+                <ul>
+                    <li class="hover:text-orange-500"><a href="">UPMS</a></li>
+                    <li class="hover:text-orange-500"><a href="">Conditro</a></li>
+                </ul>
+            </div>
+            <!-- profile avatar -->
+            <div class="bg-base-300 mb-7 p-7 rounded-lg flex flex-row gap-6 items-center">
+                <img class="w-12 rounded-full"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80"
+                    alt="">
+                <h1 class="text-2xl font-bold">Andrew Hardin</h1>
+            </div>
+
+        </div>
+        <div class="divider lg:divider-horizontal"></div>
+        <div class="grid w-3/5 flex-grow card bg-base-300 rounded-box p-7">
+            <div>
+                <h3 class="text-xl font-medium mb-2">Populer Tags</h3>
+                <button class="btn px-6 mr-2 hover:bg-orange-500">CSE</button>
+                <button class="btn px-6 mr-2 hover:bg-orange-500">EEE</button>
+                <button class="btn px-6 mr-2 hover:bg-orange-500">Civil</button>
+                <button class="btn px-6 hover:bg-orange-500">BBA</button>
+                <input type="text" placeholder="Search"
+                    class="input input-bordered w-24 md:w-auto rouned-lg ml-8 focus:border-orange-500" />
+            </div>
+            <!-- tab -->
+            <div class="tabs">
+                <a class="tab tab-bordered tab-active">Projects</a>
+                <a class="tab tab-bordered">Papers</a>
+            </div>
+            <!-- cards -->
+            <div class="grid grid-cols-3 gap-4">
+                <!-- first card -->
+                <div class="card w-52 bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h2 class="card-title">Shoes!</h2>
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+
+    </div>
+</body>
+
+</html>
