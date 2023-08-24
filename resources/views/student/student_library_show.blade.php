@@ -37,7 +37,8 @@
                     </div>
                 </button>
                 <dialog id="mod{{ $book->id }}" class="modal">
-                    <form method="dialog" class="modal-box max-w-[50%]">
+                    <form method="POST" action=" {{ route('student.library.quickReque') }}" class="modal-box max-w-[50%]">
+                        @csrf
                         <div class="flex justify-around items-center">
                             <figure>
                                 <img class="w-40 h-100"
@@ -48,10 +49,18 @@
                                 <h2 class="card-title font-me">{{ $book->name }}</h2>
                                 <p class="text-sm">{{ $book->description }}</p>
                                 <p class="text-sm font-reguler text-left">{{ $book->shelf }}</p>
-                                <button class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]">Requisition</button>
+
+                                <input name="bookID" type="text" value="{{ $book->id }}" hidden>
+                                <input name="bookName" type="text" value="{{ $book->name }}" hidden>
+
+                                <button type="submit" class="btn btn-warning text-white bg-orange-500 mt-8 w-[50%]">Request
+                                    Requisition</button>
                             </div>
+
+
                             <div class="modal-action">
                                 <!-- if there is a button in form, it will close the modal -->
+
                                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                             </div>
                     </form>

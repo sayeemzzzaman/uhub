@@ -38,6 +38,7 @@
                 </button>
                 <dialog id="mod{{ $contact->id }}" class="modal">
                     <form method="dialog" class="modal-box max-w-[50%]">
+
                         <div class="flex justify-around items-center">
                             <figure>
                                 <img class="w-40 h-100"

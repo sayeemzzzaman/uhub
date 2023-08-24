@@ -65,12 +65,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label for="status" class="form-label">status</label>
-                                        <input name="status" type="text" value="{{ $requisition->status }}"
-                                            class="form-control @error('status') is-valid @enderror">
-
-                                    </div>
+                
 
                                     <button type="submit" class="btn btn-primary me-2">Update Requisition</button>
                                 </form>
