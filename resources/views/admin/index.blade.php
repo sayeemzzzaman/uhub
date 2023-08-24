@@ -32,7 +32,7 @@
                                             <form class="forms-sample" method="POST" action=" {{ route('admin.requisition.quickUpdate') }} ">
                                                 @csrf
                                                 <input name="id" type="text" value="{{ $requisition->id }}" hidden>
-                                                <div class="mb-3">
+                                                <div class="mb-2">
 
                                                     <select name="status" class="form-select" id="status">
                                                         <option>pending</option>
