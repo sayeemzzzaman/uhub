@@ -52,7 +52,7 @@
                 <div class="collapse" id="uiComponents">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            {{-- <a href="{{ route('admin.contact.show') }}" class="nav-link">All Information</a> --}}
+                            <a href="{{ route('admin.counselling.show') }}" class="nav-link">Counsellings</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.contact.show') }}" class="nav-link">Faculty Information</a>
@@ -88,29 +88,7 @@
                 </div>
             </li>
 
-            <li class="nav-item nav-category">Projects</li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" role="button" aria-expanded="false"
-                    aria-controls="general-pages">
-                    <i class="link-icon" data-feather="book"></i>
-                    <span class="link-title">Project Management</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-                </a>
-                <div class="collapse" id="general-pages">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item">
-                            <a href="pages/general/blank-page.html" class="nav-link">Show All Project</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/general/faq.html" class="nav-link">My Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/general/invoice.html" class="nav-link">Contribution</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </li>
+            
 
         </ul>
     </div>

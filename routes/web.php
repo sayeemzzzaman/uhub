@@ -8,6 +8,7 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LibrarianController;
+use App\Http\Controllers\CounsellingController;
 use App\Http\Controllers\RequisitionController;
 use App\Http\Controllers\backend\BookController;
 
@@ -86,6 +87,24 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admin/requisition/delete/{id}', 'deleteRequisition')->name('admin.requisition.delete');
 
         Route::post('/admin/requisition/quickUpdate', 'quickUpdateRequisition')->name('admin.requisition.quickUpdate');
+
+    });
+});
+
+// Counselling links
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+
+    Route::controller(CounsellingController::class)->group(function () {
+
+        Route::get('/admin/counselling/show', 'showcounsellings')->name('admin.counselling.show');
+        Route::get('/admin/counselling/add', 'addcounselling')->name('admin.counselling.add');
+        Route::post('/admin/counselling/store', 'storecounselling')->name('admin.counselling.store');
+        Route::get('/admin/counselling/edit/{id}', 'editcounselling')->name('admin.counselling.edit');
+        Route::post('/admin/counselling/update', 'updatecounselling')->name('admin.counselling.update');
+        Route::get('/admin/counselling/delete/{id}', 'deletecounselling')->name('admin.counselling.delete');
+
+        Route::post('/admin/counselling/quickUpdate', 'quickUpdatecounselling')->name('admin.counselling.quickUpdate');
 
     });
 });

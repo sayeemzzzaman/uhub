@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clubs', function (Blueprint $table) {
+        Schema::create('counsellings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('logo')->nullable();
-            $table->string('formLink')->nullable();
-            $table->string('description');
             $table->timestamps();
+            $table->string('studentId');
+            $table->string('day');
+            $table->string('time');
+            $table->string('faculty');
+            $table->enum('status', ['pending','accepted','rejected'])->default('pending');
         });
     }
 
@@ -26,9 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clubs');
+        Schema::dropIfExists('counsellings');
     }
 };
-
-
-
