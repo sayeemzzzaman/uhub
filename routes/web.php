@@ -41,6 +41,8 @@ Route::middleware(['auth', 'role:student'])->group(function () {
 
         Route::post('/student/library/quickReque', 'quickRequeRequisition')->name('student.library.quickReque');
 
+        Route::post('/student/counselling/quickRequeCounselling', 'quickRequeCounselling')->name('student.counselling.quickRequeCounselling');
+
 
         Route::get('/student/logout', 'studentLogout')->name('student.logout');
     });
