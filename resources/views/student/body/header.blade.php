@@ -4,7 +4,7 @@
         $id = Auth::user()->id;
         $profileData = App\Models\User::find($id);
     @endphp
-    <div class="navbar bg-neutral">
+    <div class="navbar bg-neutral shadow-xl">
         <div class="navbar-start ml-12">
             <div class="dropdown">
                 <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -34,7 +34,7 @@
             <ul class="menu menu-horizontal px-4">
                 <li class="hover:text-orange-400"><a href="{{ route('student.dashboard') }}">Dashboard</a></li>
                 <li class="hover:text-orange-400"><a href="{{ route('student.library.show') }}">Library</a></li>
-                <li class="hover:text-orange-400"><a href="{{ route('student.project.show') }}">Scholarly Works</a></li>
+                <li class="hover:text-orange-400"><a href="{{ route('student.Projects.index') }}">Scholarly Works</a></li>
                 <li class="hover:text-orange-400"><a href="{{ route('student.club.show') }}">Club Archive</a></li>
                 <li class="hover:text-orange-400 pr-4 z-10" tabindex="0" >
                     <details>

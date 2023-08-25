@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ClubController extends Controller
 {
-    public function showclubs(){
+    public function clubs(){
 
         return view('backend.club.showClub', [
             'clubs' => Club::latest()->get()

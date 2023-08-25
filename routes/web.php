@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LibrarianController;
 use App\Http\Controllers\CounsellingController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RequisitionController;
 use App\Http\Controllers\backend\BookController;
 
@@ -36,7 +37,6 @@ Route::middleware(['auth', 'role:student'])->group(function () {
         Route::get('/student/library/show', 'showLibrary')->name('student.library.show');
         Route::get('/student/staff/faculty', 'showFaculty')->name('student.staff.faculty');
         Route::get('/student/staff/staffOther', 'showStaffOther')->name('student.staff.staffOther');
-        Route::get('/student/project/show', 'showProject')->name('student.project.show');
         Route::get('/student/club/show', 'showClub')->name('student.club.show');
 
         Route::post('/student/library/quickReque', 'quickRequeRequisition')->name('student.library.quickReque');
@@ -141,6 +141,23 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admin/club/edit/{id}', 'editclub')->name('admin.club.edit');
         Route::post('/admin/club/update', 'updateclub')->name('admin.club.update');
         Route::get('/admin/club/delete/{id}', 'deleteclub')->name('admin.club.delete');
+    });
+});
+
+
+// Scholarly Work links
+
+Route::middleware(['auth', 'role:student'])->group(function () {
+
+    Route::controller(ProjectController::class)->group(function () {
+//
+        Route::get('/student/projects/index', 'indexProjects')->name('student.Projects.index');
+        Route::get('/student/projects/show/{id}', 'showProjects')->name('student.Projects.show');
+        Route::get('/student/projects/add', 'addProjects')->name('student.Projects.add');
+        Route::post('/student/projects/store', 'storeProjects')->name('student.Projects.store');
+        Route::get('/student/projects/edit/{id}', 'editProjects')->name('student.Projects.edit');
+        Route::post('/student/projects/update', 'updateProjects')->name('student.Projects.update');
+        Route::get('/student/projects/delete/{id}', 'deleteProjects')->name('student.Projects.delete');
     });
 });
 

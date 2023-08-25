@@ -2,7 +2,7 @@
 @section('student')
     <div class="grid grid-cols-4 gap-12 mx-32 my-8">
 
-        <div class="overflow-x-auto col-span-2 bg-neutral-100 rounded-md px-4">
+        <div class="overflow-x-auto col-span-2 bg-neutral-100 rounded-md px-4 shadow-xl">
             <h2 class="p-4">Requisition History</h2>
             <table class="table">
                 <!-- head -->
@@ -27,7 +27,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="overflow-x-auto col-span-2 bg-neutral-100 rounded-md px-4">
+        <div class="overflow-x-auto col-span-2 bg-neutral-100 rounded-md px-4 shadow-xl">
             <h2 class="p-4">Counselling History</h2>
             <table class="table">
                 <!-- head -->
