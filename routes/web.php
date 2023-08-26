@@ -3,13 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PaperController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LibrarianController;
 use App\Http\Controllers\CounsellingController;
-use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RequisitionController;
 use App\Http\Controllers\backend\BookController;
 
@@ -89,7 +90,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admin/requisition/delete/{id}', 'deleteRequisition')->name('admin.requisition.delete');
 
         Route::post('/admin/requisition/quickUpdate', 'quickUpdateRequisition')->name('admin.requisition.quickUpdate');
-
     });
 });
 
@@ -107,7 +107,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admin/counselling/delete/{id}', 'deletecounselling')->name('admin.counselling.delete');
 
         Route::post('/admin/counselling/quickUpdate', 'quickUpdatecounselling')->name('admin.counselling.quickUpdate');
-
     });
 });
 
@@ -150,7 +149,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:student'])->group(function () {
 
     Route::controller(ProjectController::class)->group(function () {
-//
+        //
         Route::get('/student/projects/index', 'indexProjects')->name('student.Projects.index');
         Route::get('/student/projects/show/{id}', 'showProjects')->name('student.Projects.show');
         Route::get('/student/projects/add', 'addProjects')->name('student.Projects.add');
@@ -158,6 +157,28 @@ Route::middleware(['auth', 'role:student'])->group(function () {
         Route::get('/student/projects/edit/{id}', 'editProjects')->name('student.Projects.edit');
         Route::post('/student/projects/update', 'updateProjects')->name('student.Projects.update');
         Route::get('/student/projects/delete/{id}', 'deleteProjects')->name('student.Projects.delete');
+
+        Route::post('/student/projects/comment/update', 'updateComment')->name('student.Projects.comment.update');
+
+
+        Route::post('/student/projects/file/add', 'addFile')->name('student.Projects.file.add');
+        Route::get('/student/projects/file/delete', 'deleteFile')->name('student.Projects.file.delete');
+    });
+});
+
+Route::middleware(['auth', 'role:student'])->group(function () {
+
+    Route::controller(PaperController::class)->group(function () {
+        //
+        Route::get('/student/paper/index', 'indexPaper')->name('student.paper.index');
+        Route::get('/student/paper/show/{id}', 'showPaper')->name('student.paper.show');
+        Route::get('/student/paper/add', 'addPaper')->name('student.paper.add');
+        Route::post('/student/paper/store', 'storePaper')->name('student.paper.store');
+        Route::get('/student/paper/edit/{id}', 'editPaper')->name('student.paper.edit');
+        Route::post('/student/paper/update', 'updatePaper')->name('student.paper.update');
+        Route::get('/student/paper/delete/{id}', 'deletePaper')->name('student.paper.delete');
+
+        Route::post('/student/paper/comment/update', 'updateComment')->name('student.Projects.comment.update');
     });
 });
 

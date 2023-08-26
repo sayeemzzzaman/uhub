@@ -101,7 +101,6 @@
                     Create Project
                 </button>
 
-                <a href="{{ route('student.Projects.show') }}" class="text-black ml-4"> Back </a>
             </div>
         </form>
     </div>

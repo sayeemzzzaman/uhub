@@ -6,13 +6,13 @@
                 <div class="py-2 flex justify-center">
                     <div class="tabs">
                         <a href="{{ route('student.Projects.index') }}" class="tab tab-bordered tab-active">Projects</a>
-                        <a href="{{ route('student.paper.index') }}" class="tab tab-bordered">Papers</a>
+                        <a href="{{ route('student.paper.index') }} class="tab tab-bordered">Papers</a>
                     </div>
                 </div>
                 <div class="card-body py-2 px-5">
                     <div class="flex justify-between">
-                        <h2 class="card-title">My Projects</h2>
-                        <a href="{{ route('student.Projects.add') }}"
+                        <h2 class="card-title">My Papers</h2>
+                        <a href="{{ route('student.paper.add') }}"
                             class="px-4 py-1  text-white rounded-lg bg-orange-400 hover:bg-orange-500">Add Project</a>
                     </div>
 
@@ -40,7 +40,7 @@
                                 @endif
                             @endforeach
                             @if ($flag === 1)
-                                <li><a href="{{ route('student.Projects.show' , $cb->id)}}">{{ $cb->name }}</a></li>
+                                <li><a href="{{ route('student.paper.show' , $cb->id)}}>{{ $cb->name }}</a></li>
                             @endif
                         @endforeach
                     </ul>
@@ -70,7 +70,7 @@
             <div class="grid grid-cols-3 gap-4 px-4 py-6">
                 <!-- first card -->
                 @foreach ($projects as $project)
-                <a href="{{ route('student.Projects.show' , $project->id)}}">
+                <a href="{{route('student.paper.show' , $project->id)}}">
                     <div class="card w-auto bg-base-100 shadow-xl">
                         <div class="card-body">
                             <h2 class="card-title">{{ $project->name }}</h2>
