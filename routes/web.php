@@ -76,7 +76,7 @@ Route::middleware(['auth', 'role:librarian'])->group(function () {
 
 /// Admin Group Controller Links :: Book
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role:librarian'])->group(function () {
 
     Route::controller(BookController::class)->group(function () {
 
@@ -91,7 +91,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 /// Admin Group Controller Links :: requisition
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role:librarian'])->group(function () {
 
     Route::controller(RequisitionController::class)->group(function () {
 

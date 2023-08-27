@@ -7,7 +7,6 @@
             @php
                 $id = Auth::user()->id;
                 $profileData = App\Models\User::find($id);
-
                 
             @endphp
             <li class="nav-item dropdown">
@@ -50,7 +49,7 @@
                             </a>
                         </li>
                         <li class="dropdown-item py-2">
-                            <a href="{{ route('admin.logout') }}" class="text-body ms-0">
+                            <a href="{{ route('librarian.logout') }}" class="text-body ms-0">
                                 <i class="me-2 icon-md" data-feather="log-out"></i>
                                 <span>Log Out</span>
                             </a>
