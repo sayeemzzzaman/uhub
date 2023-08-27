@@ -1,5 +1,5 @@
-@extends('admin.admin_dashboard')
-@section('admin')
+@extends('librarian.librarian_dashboard')
+@section('librarian')
     <div class="page-content">
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
@@ -15,7 +15,6 @@
                                         <th>Name</th>
                                         <th>auther</th>
                                         <th>shelf</th>
-                                        <th>Action</th>
 
                                     </tr>
                                 </thead>
@@ -29,12 +28,12 @@
                                             <td>{{ $book->name }}</td>
                                             <td>{{ $book->auther }}</td>
                                             <td>{{ $book->shelf }}</td>
-                                            <td>
+                                            {{-- <td>
                                                 <a href="{{ route('admin.book.edit', $book->id) }}"
                                                     class="btn btn-inverse-warning px-4">Edit</a>
                                                 <a href="{{ route('admin.book.delete', $book->id) }}"
                                                     class="btn btn-inverse-danger px-4" id="delete">Delete</a>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>

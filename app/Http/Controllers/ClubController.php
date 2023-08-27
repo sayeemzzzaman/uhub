@@ -7,16 +7,19 @@ use Illuminate\Http\Request;
 
 class ClubController extends Controller
 {
-    public function showclubs(){
+    public function showclubs()
+    {
 
         return view('backend.club.showClub', [
             'clubs' => Club::latest()->get()
         ]);
     }
-    public function addclub(){
+    public function addclub()
+    {
         return view('backend.club.addClub');
     }
-    public function storeclub(Request $request){
+    public function storeclub(Request $request)
+    {
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -43,13 +46,14 @@ class ClubController extends Controller
 
         return redirect()->route('admin.club.showclubs')->with($notification);
     }
-    public function editclub($id){
-        return view('backend.club.editClub',[
+    public function editclub($id)
+    {
+        return view('backend.club.editClub', [
             'club' => Club::findOrFail($id)
         ]);
-
     }
-    public function updateclub(Request $request){
+    public function updateclub(Request $request)
+    {
         $cid = $request->id;
 
         if ($request->file('clubImageUpload')) {
@@ -72,7 +76,8 @@ class ClubController extends Controller
 
         return redirect()->route('admin.club.showclubs')->with($notification);
     }
-    public function deleteclub($id){
+    public function deleteclub($id)
+    {
         Club::findOrFail($id)->delete();
 
         $notification = array(
@@ -82,5 +87,4 @@ class ClubController extends Controller
 
         return redirect()->back()->with($notification);
     }
-
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Counselling;
 use App\Models\Requisition;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,9 @@ class AdminController extends Controller
 
         return view('admin.index',[
             'requisitions' => Requisition::where('status','pending')
-            ->latest()->get()
+            ->latest()->get(),
+            'counsellings' => Counselling::where('status','pending')
+            ->latest()->get(),
         ]);
     }
 
