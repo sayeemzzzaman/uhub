@@ -9,7 +9,6 @@ class ClubController extends Controller
 {
     public function showclubs()
     {
-
         return view('backend.club.showClub', [
             'clubs' => Club::latest()->get()
         ]);

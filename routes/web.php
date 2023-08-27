@@ -5,7 +5,6 @@ use App\Http\Controllers\ClubController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaperController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\MessegeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
@@ -31,27 +30,22 @@ Route::get('/', function () {
 });
 
 
-// Student Group Controller Links
+// Student :: Routs
 Route::middleware(['auth', 'role:student'])->group(function () {
     Route::controller(StudentController::class)->group(function () {
-
         Route::get('/student/dashboard', 'studentDashboard')->middleware(['auth', 'verified'])->name('student.dashboard');
         Route::get('/student/library/show', 'showLibrary')->name('student.library.show');
         Route::get('/student/staff/faculty', 'showFaculty')->name('student.staff.faculty');
         Route::get('/student/staff/staffOther', 'showStaffOther')->name('student.staff.staffOther');
         Route::get('/student/club/show', 'showClub')->name('student.club.show');
-
         Route::post('/student/library/quickReque', 'quickRequeRequisition')->name('student.library.quickReque');
-
         Route::post('/student/counselling/quickRequeCounselling', 'quickRequeCounselling')->name('student.counselling.quickRequeCounselling');
-
-
         Route::get('/student/logout', 'studentLogout')->name('student.logout');
     });
 });
 
 
-// Admin Middleware Links
+// Admin :: routs
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.admin_dashboard');
@@ -63,7 +57,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 
-// librarian Middleware Links
+// Librarian :: routs
 
 Route::middleware(['auth', 'role:librarian'])->group(function () {
     Route::get('/librarian/dashboard', [LibrarianController::class, 'librarianDashboard'])->name('librarian.librarian_dashboard');
@@ -74,7 +68,7 @@ Route::middleware(['auth', 'role:librarian'])->group(function () {
     Route::post('/librarian/update/password', [LibrarianController::class, 'librarianUpdatePassword'])->name('librarian.update.password');
 });
 
-/// Admin Group Controller Links :: Book
+/// Librarian :: Book
 
 Route::middleware(['auth', 'role:librarian'])->group(function () {
 
@@ -106,28 +100,24 @@ Route::middleware(['auth', 'role:librarian'])->group(function () {
     });
 });
 
-// Counselling links
+// Admin :: Counselling
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-
     Route::controller(CounsellingController::class)->group(function () {
-
         Route::get('/admin/counselling/show', 'showcounsellings')->name('admin.counselling.show');
         Route::get('/admin/counselling/add', 'addcounselling')->name('admin.counselling.add');
         Route::post('/admin/counselling/store', 'storecounselling')->name('admin.counselling.store');
         Route::get('/admin/counselling/edit/{id}', 'editcounselling')->name('admin.counselling.edit');
         Route::post('/admin/counselling/update', 'updatecounselling')->name('admin.counselling.update');
         Route::get('/admin/counselling/delete/{id}', 'deletecounselling')->name('admin.counselling.delete');
-
         Route::post('/admin/counselling/quickUpdate', 'quickUpdatecounselling')->name('admin.counselling.quickUpdate');
     });
 });
 
-/// contact route groups
+/// Admin :: Contact
+
 Route::middleware(['auth', 'role:admin'])->group(function () {
-
     Route::controller(ContactController::class)->group(function () {
-
         Route::get('/admin/contact/show', 'showContact')->name('admin.contact.show');
         Route::get('/admin/contact/showTA', 'showContactTA')->name('admin.contact.showTA');
         Route::get('/admin/contact/showLA', 'showContactLA')->name('admin.contact.showLA');
@@ -141,12 +131,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 });
 
-/// Club::links and group controller and middleware
+/// Admin :: Club
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-
     Route::controller(ClubController::class)->group(function () {
-
         Route::get('/admin/club/show', 'showclubs')->name('admin.club.showclubs');
         Route::get('/admin/club/add', 'addclub')->name('admin.club.add');
         Route::post('/admin/club/store', 'storeclub')->name('admin.club.store');
@@ -157,10 +145,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 
-/// admin::message routs
+/// Admin::Message
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-
     Route::controller(MessegeController::class)->group(function () {
         Route::get('/admin/message/show', 'showmessages')->name('admin.message.showmesseges');
         Route::get('/admin/message/add', 'addmessage')->name('admin.message.add');
@@ -172,12 +159,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 
-// Scholarly Work links
+// Student :: Scholarly Work
 
 Route::middleware(['auth', 'role:student'])->group(function () {
-
     Route::controller(ProjectController::class)->group(function () {
-        //
         Route::get('/student/projects/index', 'indexProjects')->name('student.Projects.index');
         Route::get('/student/projects/show/{id}', 'showProjects')->name('student.Projects.show');
         Route::get('/student/projects/add', 'addProjects')->name('student.Projects.add');
@@ -185,18 +170,16 @@ Route::middleware(['auth', 'role:student'])->group(function () {
         Route::get('/student/projects/edit/{id}', 'editProjects')->name('student.Projects.edit');
         Route::post('/student/projects/update', 'updateProjects')->name('student.Projects.update');
         Route::get('/student/projects/delete/{id}', 'deleteProjects')->name('student.Projects.delete');
-
         Route::post('/student/projects/show/message', 'updateComment')->name('student.Projects.comment.store');
-
         Route::post('/student/projects/file/add', 'addFile')->name('student.Projects.file.add');
         Route::get('/student/projects/file/delete/{id}', 'deleteFile')->name('student.Projects.file.delete');
     });
 });
 
-Route::middleware(['auth', 'role:student'])->group(function () {
+// Student :: paper
 
+Route::middleware(['auth', 'role:student'])->group(function () {
     Route::controller(PaperController::class)->group(function () {
-        //
         Route::get('/student/paper/index', 'indexPaper')->name('student.paper.index');
         Route::get('/student/paper/show/{id}', 'showPaper')->name('student.paper.show');
         Route::get('/student/paper/add', 'addPaper')->name('student.paper.add');
@@ -204,7 +187,6 @@ Route::middleware(['auth', 'role:student'])->group(function () {
         Route::get('/student/paper/edit/{id}', 'editPaper')->name('student.paper.edit');
         Route::post('/student/paper/update', 'updatePaper')->name('student.paper.update');
         Route::get('/student/paper/delete/{id}', 'deletePaper')->name('student.paper.delete');
-
         Route::post('/student/paper/comment/update', 'updateComment')->name('student.paper.comment.update');
     });
 });
@@ -216,18 +198,4 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-/// Codes:: backup
-
-// Route::middleware(['auth', 'role:faculty'])->group(function () {
-//     Route::get('/faculty/dashboard', [FacultyController::class, 'facultyDashboard'])->name('faculty.faculty_dashboard');
-
-//  });
-
-//  Route::middleware(['auth', 'role:librarian'])->group(function () {
-//     Route::get('/librarian/dashboard', [LibrarianController::class, 'librarianDashboard'])->name('librarian.librarian_dashboard');
-
-//  });
-
-
 require __DIR__ . '/auth.php';

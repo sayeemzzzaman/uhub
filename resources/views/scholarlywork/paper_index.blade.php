@@ -52,15 +52,15 @@
         <div class="col-span-3 px-5">
             <div class="navbar bg-base-100 rounded-md shadow-xl">
                 <div class="flex-1">
-                    <a href="/student/projects/index?dept=cse"
+                    <a href="/student/paper/index?dept=cse"
                         class="btn px-8 py-0 mr-2 hover:bg-orange-500 hover:text-white"> CSE </a>
-                    <a href="/student/projects/index?dept=eee"
+                    <a href="/student/paper/index?dept=eee"
                         class="btn px-8 py-0 mr-2 hover:bg-orange-500 hover:text-white"> EEE </a>
-                    <a href="/student/projects/index?dept=civil"
+                    <a href="/student/paper/index?dept=civil"
                         class="btn px-8 py-0 mr-2 hover:bg-orange-500 hover:text-white"> Civil </a>
                 </div>
 
-                <form action="/student/projects/index" class="flex-none gap-2">
+                <form action="/student/paper/index" class="flex-none gap-2">
                     <div class="form-control w-64">
                         <input name="search" type="text" placeholder="Search"
                             class="input input-bordered h-10 w-64 md:w-auto" />

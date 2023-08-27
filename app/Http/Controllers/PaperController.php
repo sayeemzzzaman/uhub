@@ -77,7 +77,11 @@ class PaperController extends Controller
 
     public function editPaper($id)
     {
-        // Logic for the editPaper route
+        return view('scholarlywork.project_edit',[
+            'paper' => Paper::findOrFail($id),
+            'comments' => Comment::where('projectId', $id)
+            ->latest()->get()
+        ]);
     }
 
     public function updatePaper(Request $request)
