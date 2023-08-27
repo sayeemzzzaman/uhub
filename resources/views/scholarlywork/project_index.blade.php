@@ -1,7 +1,7 @@
 @extends('student.student_dashboard')
 @section('student')
     <div class="grid grid-cols-4 h-screen m-3">
-        <div class="bg-base-100 shadow-xl">
+        <div class="bg-base-100 shadow-xl rounded-md">
             <div class="card w-auto bg-base-10 mt-1">
                 <div class="py-2 flex justify-center">
                     <div class="tabs">
@@ -10,13 +10,13 @@
                     </div>
                 </div>
                 <div class="card-body py-2 px-5">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between mb-2">
                         <h2 class="card-title">My Projects</h2>
                         <a href="{{ route('student.Projects.add') }}"
                             class="px-4 py-1  text-white rounded-lg bg-orange-400 hover:bg-orange-500">Add Project</a>
                     </div>
 
-                    <ul class="menu bg-base-200 w-auto">
+                    <ul class="menu bg-base-200 w-auto rounded-md">
                         @foreach ($my_projects as $mp)
                             <li><a href="{{ route('student.Projects.show' , $mp->id)}}">{{ $mp->name }}</a></li>
                         @endforeach
@@ -25,7 +25,7 @@
 
                 <div class="card-body rounded py-2 px-5">
                     <h2 class="card-title">Contribution</h2>
-                    <ul class="menu bg-base-200 w-auto">
+                    <ul class="menu bg-base-200 w-auto rounded-md">
                         @foreach ($Contribs as $cb)
                             @php
                                 $string = $cb->contributors;
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="col-span-3 p-5">
+        <div class="col-span-3 px-5">
             <div class="navbar bg-base-100 rounded-md shadow-xl">
                 <div class="flex-1">
                     <a href="/student/projects/index?dept=cse" class="btn px-8 py-0 mr-2 hover:bg-orange-500 hover:text-white"> CSE </a>

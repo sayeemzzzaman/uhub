@@ -59,24 +59,30 @@
 
         <div class="col-span-2">
             <div class="overflow-x-auto pb-6 bg-neutral-100 rounded-md px-4 shadow-xl">
-                <h2 class="py-6 px-4">Notification</h2>
+                <h2 class="pt-6 px-4">Notification</h2>
                 <table class="table">
-
                     <tbody>
-                        <tr class="join join-vertical">
-                            <td>
-                                <div class="rounded-lg bg-gray-400 h-1 mb-2"></div>
-                                3rd installment: A fine of Tk. 1,000/- will be imposed if 100% of Tuition Fee and Trimester
-                                Fee is not paid within this date.
-                            </td>
-                            <td>
-                                <div class="rounded-lg bg-gray-400 h-1 mb-2"></div>
-                                Make-up class: Regular Saturday Classes
-                            </td>
-                            <td>
-                                <div class="rounded-lg bg-gray-400 h-1 mb-2"></div>
-                                Final Exam -> Sep 3 -12, 2023
-                            </td>
+                        <tr class="join join-vertical w-auto">
+                            @foreach ($Messages as $msg)
+                                <td class="w-auto">
+                                    <button onclick="modal{{ $msg->id }}.showModal()">
+                                        <div class="card">
+                                            <div class="rounded-lg bg-gray-400 h-1 mb-2"></div>
+                                            {{ $msg->subject }}
+                                        </div>
+
+                                    </button>
+                                    <dialog id="modal{{ $msg->id }}" class="modal">
+                                        <form method="dialog" class="modal-box">
+                                            <h3 class="font-bold text-lg">Subject : {{ $msg->subject }}</h3>
+                                            <p class="py-4">{{ $msg->message }}</p>
+                                        </form>
+                                        <form method="dialog" class="modal-backdrop">
+                                            <button>close</button>
+                                        </form>
+                                    </dialog>
+                                </td>
+                            @endforeach
                         </tr>
 
                     </tbody>
@@ -84,8 +90,6 @@
             </div>
 
         </div>
-
-
 
     </div>
 @endsection

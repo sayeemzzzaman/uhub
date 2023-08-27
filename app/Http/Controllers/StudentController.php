@@ -7,6 +7,7 @@ use App\Models\Club;
 use App\Models\User;
 use App\Models\Contact;
 use App\Models\Counselling;
+use App\Models\Message;
 use App\Models\Requisition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,8 @@ class StudentController extends Controller
                 ->get(),
             'counsellings' => Counselling::where('studentId', $studentId)
                 ->latest()
+                ->get(),
+            'Messages' => Message::latest()
                 ->get()
         ]);
     }
@@ -87,8 +90,8 @@ class StudentController extends Controller
         $string = $request->timeing;
         $cTimes = explode('_', $string);
 
-        $day= $cTimes[0];
-        $time= $cTimes[1];
+        $day = $cTimes[0];
+        $time = $cTimes[1];
 
         Counselling::insert([
             'studentId' => $profileData->uiuid,

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaperController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\MessegeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\StudentController;
@@ -144,6 +145,21 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 
+/// admin::message routs
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+
+    Route::controller(MessegeController::class)->group(function () {
+        Route::get('/admin/message/show', 'showmessages')->name('admin.message.showmesseges');
+        Route::get('/admin/message/add', 'addmessage')->name('admin.message.add');
+        Route::post('/admin/message/store', 'storemessage')->name('admin.message.store');
+        Route::get('/admin/message/edit/{id}', 'editmessage')->name('admin.message.edit');
+        Route::post('/admin/message/update', 'updatemessage')->name('admin.message.update');
+        Route::get('/admin/message/delete/{id}', 'deletemessage')->name('admin.message.delete');
+    });
+});
+
+
 // Scholarly Work links
 
 Route::middleware(['auth', 'role:student'])->group(function () {
@@ -159,7 +175,6 @@ Route::middleware(['auth', 'role:student'])->group(function () {
         Route::get('/student/projects/delete/{id}', 'deleteProjects')->name('student.Projects.delete');
 
         Route::post('/student/projects/comment/update', 'updateComment')->name('student.Projects.comment.update');
-
 
         Route::post('/student/projects/file/add', 'addFile')->name('student.Projects.file.add');
         Route::get('/student/projects/file/delete', 'deleteFile')->name('student.Projects.file.delete');
@@ -178,7 +193,7 @@ Route::middleware(['auth', 'role:student'])->group(function () {
         Route::post('/student/paper/update', 'updatePaper')->name('student.paper.update');
         Route::get('/student/paper/delete/{id}', 'deletePaper')->name('student.paper.delete');
 
-        Route::post('/student/paper/comment/update', 'updateComment')->name('student.Projects.comment.update');
+        Route::post('/student/paper/comment/update', 'updateComment')->name('student.paper.comment.update');
     });
 });
 

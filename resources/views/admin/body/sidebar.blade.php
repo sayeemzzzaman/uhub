@@ -88,7 +88,24 @@
                 </div>
             </li>
 
-            
+            <li class="nav-item nav-category">Notification</li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#messagead" role="button" aria-expanded="false"
+                    aria-controls="messagead">
+                    <i class="link-icon" data-feather="mail"></i>
+                    <span class="link-title">messeges</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="messagead">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.message.showmesseges')}}" class="nav-link">Message List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
 
         </ul>
     </div>
