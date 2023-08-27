@@ -2,10 +2,7 @@
 @section('student')
     {{-- search --}}
     <form action="/student/stuff/staffOther">
-        <div class="relative border-2 border-gray-100 mx-64 my-6 rounded-lg">
-            <div class="absolute top-4 left-4">
-                <i class=" fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
-            </div>
+        <div class="relative border-2 border-gray-100 mx-64 my-6 rounded-lg shadow-xl">
             <input type="text" name="search" class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
                 placeholder="Search Contacts" />
             <div class="absolute top-2 right-3">

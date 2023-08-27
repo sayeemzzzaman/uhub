@@ -14,7 +14,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="hero place-items-start font-sans text-gray-900 antialiased bg-no-repeat bg-[length:100%_130%]" style="background-image: url('storage/images/bg.jpg');">
+    <body class="hero place-items-start font-sans text-gray-900 antialiased bg-no-repeat bg-[length:100%_130%]" style="background-image: url('{{asset('images/login_bg.jpg')}}');">
         <div class="hero-overlay bg-opacity-60"></div>
         <div class="min-h-screen flex flex-col sm:justify-center items-left pl-24 pt-6 sm:pt-0" >
             <div class="">

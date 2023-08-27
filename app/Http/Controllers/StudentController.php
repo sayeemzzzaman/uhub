@@ -6,6 +6,8 @@ use App\Models\Book;
 use App\Models\Club;
 use App\Models\User;
 use App\Models\Contact;
+use App\Models\Counselling;
+use App\Models\Message;
 use App\Models\Requisition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,51 +15,54 @@ use Illuminate\Http\RedirectResponse;
 
 class StudentController extends Controller
 {
-    public function studentDashboard(){
+    public function studentDashboard()
+    {
         $studentId = Auth::user()->uiuid;
         return view('student.student_index', [
             'requisitions' => Requisition::where('studentID', $studentId)
                 ->latest()
+                ->get(),
+            'counsellings' => Counselling::where('studentId', $studentId)
+                ->latest()
+                ->get(),
+            'Messages' => Message::latest()
                 ->get()
         ]);
-
     }
 
-    public function showLibrary(){
+    public function showLibrary()
+    {
         return view('student.student_library_show', [
             'books' => Book::latest()->filter(request(['search']))->paginate(10)
         ]);
-
     }
-    public function showFaculty(){
+    public function showFaculty()
+    {
 
         return view('student.student_faculty_show', [
             'contacts' => Contact::where('designation', 'Faculty')->latest()->filter(request(['search']))->paginate(10),
 
         ]);
-
     }
-    public function showStaffOther(){
+    public function showStaffOther()
+    {
 
         return view('student.student_stuff_show', [
             'contacts' => Contact::whereIn('designation', ['Lab attendent', 'TA'])->latest()->filter(request(['search']))->paginate(10),
 
         ]);
-
     }
-    public function showClub(){
+    public function showClub()
+    {
 
         return view('student.student_club_show', [
             'clubs' => Club::latest()->filter(request(['search']))->paginate(10),
 
         ]);
-
     }
 
     public function quickRequeRequisition(Request $request)
     {
-
-
         $id = Auth::user()->id;
         $profileData = User::find($id);
 
@@ -75,6 +80,34 @@ class StudentController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+
+    public function quickRequeCounselling(Request $request)
+    {
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+
+        $string = $request->timeing;
+        $cTimes = explode('_', $string);
+
+        $day = $cTimes[0];
+        $time = $cTimes[1];
+
+        Counselling::insert([
+            'studentId' => $profileData->uiuid,
+            'day' => $day,
+            'time' => $time,
+            'faculty' => $request->faculty,
+        ]);
+
+        $notification = array(
+            'message' => 'Counselling added successfuly',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
 
 
     public function studentLogout(Request $request): RedirectResponse

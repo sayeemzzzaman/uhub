@@ -1,5 +1,5 @@
-@extends('admin.admin_dashboard')
-@section('admin')
+@extends('librarian.librarian_dashboard')
+@section('librarian')
     <div class="page-content">
         <div class="row profile-body">
             <!-- middle wrapper start -->
@@ -65,7 +65,7 @@
                                         @enderror
                                     </div>
 
-                
+
 
                                     <button type="submit" class="btn btn-primary me-2">Update Requisition</button>
                                 </form>

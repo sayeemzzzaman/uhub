@@ -3,36 +3,37 @@
 
 <div class="page-content">
 
+    {{-- Counselling --}}
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Requisition Request</h6>
+                    <h6 class="card-title">Counselling Request</h6>
                     <div class="table-responsive">
                         <table id="dataTableExample" class="table">
                             <thead>
                                 <tr>
-                                    <th>requisitionsId</th>
-                                    <th>bookID</th>
-                                    <th>studentID</th>
-                                    <th>bookName</th>
+                                    <th>Student Id</th>
+                                    <th>Day</th>
+                                    <th>Time</th>
+                                    <th>Faculty</th>
                                     <th>status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($requisitions as $requisition)
+                                @foreach ($counsellings as $counselling)
                                     <tr>
-                                        <td>{{ $requisition->requisitionsId }}</td>
-                                        <td>{{ $requisition->bookID }}</td>
-                                        <td>{{ $requisition->studentID }}</td>
-                                        <td>{{ $requisition->bookName }}</td>
-                                        <td>{{ $requisition->status }}</td>
+                                        <td>{{ $counselling->studentId }}</td>
+                                        <td>{{ $counselling->day }}</td>
+                                        <td>{{ $counselling->time }}</td>
+                                        <td>{{ $counselling->faculty }}</td>
+                                        <td>{{ $counselling->status }}</td>
                                         <td>
-                                            <form class="forms-sample" method="POST" action=" {{ route('admin.requisition.quickUpdate') }} ">
+                                            <form class="forms-sample" method="POST" action=" {{ route('admin.counselling.quickUpdate') }} ">
                                                 @csrf
-                                                <input name="id" type="text" value="{{ $requisition->id }}" hidden>
-                                                <div class="mb-3">
+                                                <input name="id" type="text" value="{{ $counselling->id }}" hidden>
+                                                <div class="mb-2">
 
                                                     <select name="status" class="form-select" id="status">
                                                         <option>pending</option>
@@ -41,7 +42,7 @@
                                                     </select>
                                                 </div>
 
-                                                <button type="submit" class="btn btn-inverse-warning me-2">Update Requisition</button>
+                                                <button type="submit" class="btn btn-inverse-warning me-2">Update Counselling</button>
                                             </form>
                                         </td>
                                     </tr>
