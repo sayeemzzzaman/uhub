@@ -4,6 +4,9 @@
         <div class="px-2 mt-6">
             <div class="card w-auto bg-base-200 shadow-xl">
                 <div class="card-body">
+
+                    <img class="py-4" src="{{ !empty($project->logo) ? url('uploads/admin_images/' . $project->logo) : url('uploads/no_image.jpg') }}" />
+
                     <h2 class="card-title">{{ $project->name }}</h2>
 
                     <div class="card-actions my-1">

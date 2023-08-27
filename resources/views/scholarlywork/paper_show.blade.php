@@ -1,99 +1,117 @@
 @extends('student.student_dashboard')
 @section('student')
-    <div class="grid grid-cols-4 h-screen m-3">
-        <div class="bg-base-100 shadow-xl">
-            <div class="card w-auto bg-base-10 mt-1">
-                <div class="py-2 flex justify-center">
-                    <div class="tabs">
-                        <a href="{{ route('student.Projects.index') }}" class="tab tab-bordered tab-active">Projects</a>
-                        <a href="{{ route('student.paper.index') }} class="tab tab-bordered">Papers</a>
-                    </div>
-                </div>
-                <div class="card-body py-2 px-5">
-                    <div class="flex justify-between">
-                        <h2 class="card-title">My Papers</h2>
-                        <a href="{{ route('student.paper.add') }}"
-                            class="px-4 py-1  text-white rounded-lg bg-orange-400 hover:bg-orange-500">Add Project</a>
-                    </div>
+    <div class="grid grid-cols-4 h-screen ml-3">
+        <div class="px-2 mt-6">
+            <div class="card w-auto bg-base-200 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">{{ $paper->name }}</h2>
 
-                    <ul class="menu bg-base-200 w-auto">
-                        @foreach ($my_projects as $mp)
-                            <li><a href="{{ route('student.Projects.show' , $mp->id)}}">{{ $mp->name }}</a></li>
+                    <div class="card-actions my-1">
+                        @php
+                            $string = $paper->contributors;
+                            $contri = explode(',', $string);
+                        @endphp
+                        @foreach ($contri as $con)
+                            <div class="badge badge-outline">{{ $con }}</div>
                         @endforeach
-                    </ul>
-                </div>
-
-                <div class="card-body rounded py-2 px-5">
-                    <h2 class="card-title">Contribution</h2>
-                    <ul class="menu bg-base-200 w-auto">
-                        @foreach ($Contribs as $cb)
-                            @php
-                                $string = $cb->contributors;
-                                $contri = explode(',', $string);
-                                $flag = 0;
-                            @endphp
-                            @foreach ($contri as $con)
-                                @if ($con === Auth::user()->name)
-                                    @php
-                                        $flag = 1;
-                                    @endphp
-                                @endif
-                            @endforeach
-                            @if ($flag === 1)
-                                <li><a href="{{ route('student.paper.show' , $cb->id)}}>{{ $cb->name }}</a></li>
-                            @endif
-                        @endforeach
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-span-3 p-5">
-            <div class="navbar bg-base-100 rounded-md shadow-xl">
-                <div class="flex-1">
-                    <a href="/student/projects/index?dept=cse" class="btn px-8 py-0 mr-2 hover:bg-orange-500 hover:text-white"> CSE </a>
-                    <a href="/student/projects/index?dept=eee" class="btn px-8 py-0 mr-2 hover:bg-orange-500 hover:text-white"> EEE </a>
-                    <a href="/student/projects/index?dept=civil" class="btn px-8 py-0 mr-2 hover:bg-orange-500 hover:text-white"> Civil </a>
-                </div>
-
-                <form action="/student/projects/index" class="flex-none gap-2">
-                    <div class="form-control w-64">
-                        <input name="search" type="text" placeholder="Search"
-                            class="input input-bordered h-10 w-64 md:w-auto" />
                     </div>
-                    <button type="submit" class="px-10 py-2  text-white rounded-lg bg-orange-400 hover:bg-orange-500">
-                        Search
-                    </button>
-                </form>
-            </div>
-            <div class="grid grid-cols-3 gap-4 px-4 py-6">
-                <!-- first card -->
-                @foreach ($projects as $project)
-                <a href="{{route('student.paper.show' , $project->id)}}">
-                    <div class="card w-auto bg-base-100 shadow-xl">
-                        <div class="card-body">
-                            <h2 class="card-title">{{ $project->name }}</h2>
+                    <h4 class="pt-2">Paper Links</h4>
 
-                            <div class="card-actions my-1">
-                                @php
-                                    $string = $project->contributors;
-                                    $contri = explode(',', $string);
-                                @endphp
-                                @foreach ($contri as $con)
-                                    <div class="badge badge-outline">{{ $con }}</div>
-                                @endforeach
-                            </div>
-                            <p>{{ $project->bio }}</p>
+                    <div class="flex">
+
+                        <a href="{{ $paper->github }}"
+                            class="btn px-8 py-2 mr-2  text-white rounded-lg bg-orange-400 hover:bg-orange-500">Github</a>
+                        <a href="{{ $paper->scholar }}"
+                            class="btn px-8 py-2  text-white rounded-lg bg-orange-400 hover:bg-orange-500">Scholar</a>
+                    </div>
+
+                    <h3 class="text-gray-600 mt-2">BIO</h3>
+                    <p class="">{{ $paper->bio }}</p>
+
+                    <div class="flex mt-2">
+                        <a href="#" class="btn bg-orange-400 text-white">Like</a>
+                        <p class="text-gray-600 px-3 py-3"> Liked By {{ $paper->like }}</p>
+                    </div>
+                </div>
+            </div>
+
+            @php
+                $profileData = App\Models\User::find(Auth::user()->id);
+            @endphp
+            @if ($profileData->uiuid === $paper->owner)
+                <div class="card w-auto bg-base-200 shadow-xl mt-6">
+                    <div class="card-body">
+
+                        <div class="flex justify-center">
+                            <a href="{{ route('student.paper.edit', $paper->id) }}"
+                                class="btn px-8 py-2 mr-2  text-white rounded-lg bg-yellow-600 hover:bg-yellow-700">Edit</a>
+                            <a href="{{ route('student.paper.delete', $paper->id) }}"
+                                class="btn px-8 py-2  text-white rounded-lg bg-red-400 hover:bg-red-500">Delete</a>
                         </div>
                     </div>
-                </a>
+                </div>
+            @endif
 
-                @endforeach
+        </div>
 
+        <div class="col-span-3 px-4">
+            <div class="card w-auto bg-base-200 shadow-xl mt-6 ">
+                <div class="card-body pb-8">
+                    <div class="h-32 p-auto">
+                        <!-- first card -->
+                            <a href="{{ url('uploads/files/' . $paper->link) }}">
+                                <div class="mt-2">
+                                    <figure><img src="{{ asset('images/file.png') }}" alt="file"></figure>
+                                    <h4 class="text-center pt-2">Download paper</h4>
+                                </div>
+                            </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card w-auto bg-base-200 shadow-xl mt-6">
+                <div class="card-body">
+                    <div class="flex">
+                        <div class="w-20 rounded-full mr-8">
+                            @php
+                                $photo = Auth::user()->photo;
+                            @endphp
+                            <img src="{{ !empty($photo) ? url('uploads/admin_images/' . $photo) : url('uploads/no_image.jpg') }}"
+                                class="rounded-full" />
+                        </div>
+                        <div class="form-control w-full max-w-2xl flex py-4">
+                            <form action="{{ route('student.Projects.comment.store') }}" method="post">
+                                @csrf
+                                <div class="flex">
+                                    <input type="text" name="id" value="{{ $paper->id }}" hidden>
+                                    <input name="message" type="text" placeholder="Type here"
+                                        class="input input-bordered w-full mr-2" />
+                                    <button type="submit"
+                                        class="bg-orange-500 hover:bg-orange-600 px-7 py-2 rounded-lg ml-1 text-white">Send</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="join join-vertical ml-12">
+                    @foreach ($comments as $comment)
+                        <div class="flex mb-3">
+                            <div class="w-16 rounded-full mr-8">
+                                <img src="{{ !empty($comment->photo) ? url('uploads/admin_images/' . $comment->photo) : url('images/user.png') }}"
+                                    class="rounded-full" />
+                            </div>
+                            <div class="">
+                                <h4 class="text-gray-600 text-xl">{{ $comment->name }}</h4>
+                                <p class="">{{ $comment->message }}</p>
+
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
+
+
         <!-- cards -->
         {{-- <div class="grid grid-cols-3 gap-4">
         <!-- first card -->

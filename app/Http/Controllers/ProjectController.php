@@ -44,7 +44,6 @@ class ProjectController extends Controller
             $fileName = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('uploads/files'), $fileName);
         }
-
         Files::insert([
             'projectid' => $request->id,
             'name' => $request->name,

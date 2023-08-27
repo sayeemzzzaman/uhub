@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Paper;
-use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,9 +14,9 @@ class PaperController extends Controller
     {
         $owner = Auth::user()->uiuid;
         return view('scholarlywork.paper_index', [
-            'projects' => Project::latest()->filter(request(['search','dept']))->paginate(10),
-            'my_projects' => Project::where('owner', $owner)->latest()->get(),
-            'Contribs' => Project::latest()->get()
+            'papers' => Paper::latest()->filter(request(['search','dept']))->paginate(10),
+            'my_papers' => Paper::where('owner', $owner)->latest()->get(),
+            'Contribs' => Paper::latest()->get()
         ]);
     }
 
@@ -26,21 +25,54 @@ class PaperController extends Controller
 
         $owner = Auth::user()->uiuid;
         return view('scholarlywork.paper_show', [
-            'projects' => Project::latest()->filter(request(['search','dept']))->paginate(10),
-            'my_projects' => Project::where('owner', $owner)->latest()->get(),
-            'comments' => Comment::where('projectId', $id)->latest()->get(),
-            'Contribs' => Project::latest()->get()
+            'paper' => Paper::findOrFail($id),
+            'comments' => Comment::where('projectId', $id)->latest()->get()
         ]);
     }
 
     public function addPaper()
     {
-        // Logic for the addPaper route
+        return view('scholarlywork.paper_add');
     }
 
     public function storePaper(Request $request)
     {
-        // Logic for the storePaper route
+        $request->validate([
+            'name' => 'required',
+            'contributors' => 'required',
+            'dept' => 'required',
+            'paperFile' => 'required',
+            'status' => 'required'
+        ]);
+
+        $uiuid = Auth::user()->uiuid;
+
+        if ($request->file('paperFile')) {
+            $file = $request->file('paperFile');
+            $fileName = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('uploads/files'), $fileName);
+        }
+
+        Paper::insert([
+            'name' => $request->name,
+            'github' => $request->github,
+            'Scholar' => $request->Scholar,
+            'owner' => $uiuid,
+            'paperLink' => $fileName,
+            'bio' => $request->bio,
+            'contributors' => $request->contributors,
+            'dept' => $request->dept,
+            'status' => $request->status,
+        ]);
+
+
+
+        $notification = array(
+            'message' => 'Requisition added successfuly',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('student.paper.index')->with($notification);
     }
 
     public function editPaper($id)
@@ -56,10 +88,5 @@ class PaperController extends Controller
     public function deletePaper($id)
     {
         // Logic for the deletePaper route
-    }
-
-    public function updateComment(Request $request)
-    {
-        // Logic for the updateComment route
     }
 }

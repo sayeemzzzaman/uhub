@@ -62,6 +62,18 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/update/password', [AdminController::class, 'adminUpdatePassword'])->name('admin.update.password');
 });
 
+
+// librarian Middleware Links
+
+Route::middleware(['auth', 'role:librarian'])->group(function () {
+    Route::get('/librarian/dashboard', [LibrarianController::class, 'librarianDashboard'])->name('librarian.librarian_dashboard');
+    Route::get('/librarian/logout', [LibrarianController::class, 'librarianLogout'])->name('librarian.logout');
+    Route::get('/librarian/profile', [LibrarianController::class, 'librarianProfile'])->name('librarian.profile');
+    Route::post('/librarian/profile/store', [LibrarianController::class, 'librarianProfileStore'])->name('librarian.profile.store');
+    Route::get('/librarian/change/password', [LibrarianController::class, 'librarianChangePassword'])->name('librarian.change.password');
+    Route::post('/librarian/update/password', [LibrarianController::class, 'librarianUpdatePassword'])->name('librarian.update.password');
+});
+
 /// Admin Group Controller Links :: Book
 
 Route::middleware(['auth', 'role:admin'])->group(function () {

@@ -12,12 +12,12 @@
                 <div class="card-body py-2 px-5">
                     <div class="flex justify-between">
                         <h2 class="card-title">My Papers</h2>
-                        <a href="{{ route('student.Projects.add') }}"
+                        <a href="{{ route('student.paper.add') }}"
                             class="px-4 py-1  text-white rounded-lg bg-orange-400 hover:bg-orange-500">Add Project</a>
                     </div>
 
                     <ul class="menu bg-base-200 w-auto">
-                        @foreach ($my_projects as $mp)
+                        @foreach ($my_papers as $mp)
                             <li><a href="{{ route('student.paper.show', $mp->id) }}">{{ $mp->name }}</a></li>
                         @endforeach
                     </ul>
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="col-span-3 p-5">
+        <div class="col-span-3 px-5">
             <div class="navbar bg-base-100 rounded-md shadow-xl">
                 <div class="flex-1">
                     <a href="/student/projects/index?dept=cse"
@@ -72,22 +72,22 @@
             </div>
             <div class="grid grid-cols-3 gap-4 px-4 py-6">
                 <!-- first card -->
-                @foreach ($projects as $project)
-                <a href="{{ route('student.paper.show', $project->id) }}">
+                @foreach ($papers as $paper)
+                <a href="{{ route('student.paper.show', $paper->id) }}">
                     <div class="card w-auto bg-base-100 shadow-xl">
                         <div class="card-body">
-                            <h2 class="card-title">{{ $project->name }}</h2>
+                            <h2 class="card-title">{{ $paper->name }}</h2>
 
                             <div class="card-actions my-1">
                                 @php
-                                    $string = $project->contributors;
+                                    $string = $paper->contributors;
                                     $contri = explode(',', $string);
                                 @endphp
                                 @foreach ($contri as $con)
                                     <div class="badge badge-outline">{{ $con }}</div>
                                 @endforeach
                             </div>
-                            <p>{{ $project->bio }}</p>
+                            <p>{{ $paper->bio }}</p>
                         </div>
                     </div>
                 </a>
