@@ -7,6 +7,8 @@
             @php
                 $id = Auth::user()->id;
                 $profileData = App\Models\User::find($id);
+
+                
             @endphp
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"

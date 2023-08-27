@@ -76,35 +76,41 @@
                         <button class="btn bg-orange-400 hover:bg-orange-500 text-white"
                             onclick="my_modal_3.showModal()">Add File</button>
                         <dialog id="my_modal_3" class="modal">
-                            <h3>Chose your file</h3>
-                            <form action="{{ route('student.Projects.file.add') }}" method="post" class="modal-box flex" enctype="multipart/form-data>
-                                @csrf
-                                <input type="text" name="id" value="$project->id" hidden>
-                                <input type="text" name="name" value="$project->name" hidden>
-                                <input type="file" name="logo">
-                                <button type='submit'
-                                    class="btn mt-4 px-10 bg-orange-400 hover:bg-orange-500 text-white">upload file</button>
-                            </form>
+                            <div class="modal-box">
+                                <h3 class="mb-2 ">Chose your File</h3>
+                                <form action="{{ route('student.Projects.file.add') }}" method="post"  enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="id" value="{{$project->id}}" hidden>
+                                    <input type="text" class="p-1 my-2" name="name" placeholder="File name">
+                                    <input type="file" name="file">
+                                    <button type='submit'
+                                        class="btn mt-4 px-10 bg-orange-400 hover:bg-orange-500 text-white">upload
+                                        file</button>
+                                </form>
+                            </div>
+
                         </dialog>
                     </div>
 
-                    <div class="overflow-x-auto col-span-2 bg-neutral-100 rounded-md px-4 shadow-xl">
+                    <div class="overflow-x-auto col-span-2 bg-neutral-100 rounded-md px-4 shadow-xl pb-4">
 
                         <table class="table">
                             <!-- head -->
                             <thead>
                                 <tr>
-                                    <th>name</th>
-                                    <th>action</th>
+                                    <th class="text-xl">name</th>
+                                    <th class="text-xl">action</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 @foreach ($files as $file)
-                                    <tr>
+                                    <tr class="mb-3">
                                         <td>{{ $file->name }}</td>
-                                        <td><a href="{{ route('student.Projects.file.delete', $file->id ) }}"
-                                                class="btn bg-red-400 hover:bg-red-500 text-white">Delete</a>
+                                        <td>
+                                            <a href="{{ route('student.Projects.file.delete', $file->id) }}"
+                                                class="bg-red-400 px-12 py-2 rounded-lg hover:bg-red-500 text-white">Delete</a>
+
                                         <td>
 
                                     </tr>

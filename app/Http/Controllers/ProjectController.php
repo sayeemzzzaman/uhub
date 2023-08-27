@@ -34,21 +34,28 @@ class ProjectController extends Controller
     {
 
         $request->validate([
+            'name' => 'required',
             'file' => 'required',
         ]);
         $uiuid = Auth::user()->uiuid;
-        
-        if ($request->file('logo')) {
-            $file = $request->file('logo');
+
+        if ($request->file('file')) {
+            $file = $request->file('file');
             $fileName = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('uploads/files'), $fileName);
         }
 
-        Project::insert([
-            'projectId' => $request->id,
+        Files::insert([
+            'projectid' => $request->id,
             'name' => $request->name,
             'link' => $file
         ]);
+        $notification = array(
+            'message' => 'file added successfuly',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('student.Projects.edit', $request->id)->with($notification);
     }
     public function addProjects()
     {
@@ -93,7 +100,6 @@ class ProjectController extends Controller
 
         $uiuid = Auth::user()->uiuid;
         $name = Auth::user()->name;
-        dd($request);
         Comment::insert([
             'projectId' => $request->id,
             'userId' => $uiuid,
@@ -122,7 +128,7 @@ class ProjectController extends Controller
         Project::findOrFail($request->id)->update([
             'name' => $request->name,
             'github' => $request->github,
-            'Scholar' => $request->Scholar,
+            'scholar' => $request->scholar,
             'bio' => $request->bio,
             'contributors' => $request->contributors,
         ]);

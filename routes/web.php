@@ -174,10 +174,10 @@ Route::middleware(['auth', 'role:student'])->group(function () {
         Route::post('/student/projects/update', 'updateProjects')->name('student.Projects.update');
         Route::get('/student/projects/delete/{id}', 'deleteProjects')->name('student.Projects.delete');
 
-        Route::post('/student/projects/comment/update', 'updateComment')->name('student.Projects.comment.update');
+        Route::post('/student/projects/show/message', 'updateComment')->name('student.Projects.comment.store');
 
         Route::post('/student/projects/file/add', 'addFile')->name('student.Projects.file.add');
-        Route::get('/student/projects/file/delete', 'deleteFile')->name('student.Projects.file.delete');
+        Route::get('/student/projects/file/delete/{id}', 'deleteFile')->name('student.Projects.file.delete');
     });
 });
 

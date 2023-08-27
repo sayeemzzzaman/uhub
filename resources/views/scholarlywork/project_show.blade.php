@@ -36,16 +36,23 @@
                 </div>
             </div>
 
-            <div class="card w-auto bg-base-200 shadow-xl mt-6">
-                <div class="card-body">
-                    <div class="flex justify-center">
-                        <a href="{{ route('student.Projects.edit', $project->id) }}"
-                            class="btn px-8 py-2 mr-2  text-white rounded-lg bg-yellow-600 hover:bg-yellow-700">Edit</a>
-                        <a href="{{ route('student.Projects.delete', $project->id) }}"
-                            class="btn px-8 py-2  text-white rounded-lg bg-red-400 hover:bg-red-500">Delete</a>
+            @php
+                $profileData = App\Models\User::find(Auth::user()->id);
+            @endphp
+            @if ($profileData->uiuid === $project->owner)
+                <div class="card w-auto bg-base-200 shadow-xl mt-6">
+                    <div class="card-body">
+
+                        <div class="flex justify-center">
+                            <a href="{{ route('student.Projects.edit', $project->id) }}"
+                                class="btn px-8 py-2 mr-2  text-white rounded-lg bg-yellow-600 hover:bg-yellow-700">Edit</a>
+                            <a href="{{ route('student.Projects.delete', $project->id) }}"
+                                class="btn px-8 py-2  text-white rounded-lg bg-red-400 hover:bg-red-500">Delete</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
+
         </div>
 
         <div class="col-span-3 px-4">
@@ -67,29 +74,27 @@
             </div>
             <div class="card w-auto bg-base-200 shadow-xl mt-6">
                 <div class="card-body">
-                    <form action="" method="post">
-                        <div class="flex">
-                            <div class="w-20 rounded-full mr-8">
-                                @php
-                                    $photo = Auth::user()->photo;
-                                @endphp
-                                <img src="{{ !empty($photo) ? url('uploads/admin_images/' . $photo) : url('uploads/no_image.jpg') }}"
-                                    class="rounded-full" />
-                            </div>
-                            <div class="form-control w-full max-w-2xl flex py-4">
-                                <form action="{{ route('student.Projects.comment.update') }}" method="post">
-                                    @csrf
-                                    <div class="flex">
-                                        <input type="text" name="id" value="{{$project->id}}" hidden >
-                                        <input name="message" type="text" placeholder="Type here"
-                                            class="input input-bordered w-full mr-2" />
-                                        <button type="submit"
-                                            class="bg-orange-500 hover:bg-orange-600 px-7 py-2 rounded-lg ml-1 text-white">Send</button>
-                                    </div>
-                                </form>
-                            </div>
+                    <div class="flex">
+                        <div class="w-20 rounded-full mr-8">
+                            @php
+                                $photo = Auth::user()->photo;
+                            @endphp
+                            <img src="{{ !empty($photo) ? url('uploads/admin_images/' . $photo) : url('uploads/no_image.jpg') }}"
+                                class="rounded-full" />
                         </div>
-                    </form>
+                        <div class="form-control w-full max-w-2xl flex py-4">
+                            <form action="{{ route('student.Projects.comment.store') }}" method="post">
+                                @csrf
+                                <div class="flex">
+                                    <input type="text" name="id" value="{{ $project->id }}" hidden>
+                                    <input name="message" type="text" placeholder="Type here"
+                                        class="input input-bordered w-full mr-2" />
+                                    <button type="submit"
+                                        class="bg-orange-500 hover:bg-orange-600 px-7 py-2 rounded-lg ml-1 text-white">Send</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="join join-vertical ml-12">
