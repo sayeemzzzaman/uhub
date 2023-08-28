@@ -204,7 +204,7 @@ Route::middleware(['auth', 'role:student'])->group(function () {
         Route::get('/student/paper/edit/{id}', 'editPaper')->name('student.paper.edit');
         Route::post('/student/paper/update', 'updatePaper')->name('student.paper.update');
         Route::get('/student/paper/delete/{id}', 'deletePaper')->name('student.paper.delete');
-
+        Route::post('/student/paper/file/add', 'addFile')->name('student.papaer.file.add');
         Route::post('/student/paper/comment/update', 'updateComment')->name('student.paper.comment.update');
     });
 });

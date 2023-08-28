@@ -77,16 +77,40 @@ class PaperController extends Controller
 
     public function editPaper($id)
     {
-        // Logic for the editPaper route
+        $paper = Paper::findOrFail($id);
+        return view('scholarlywork.paper_edit',[
+            'paper' => $paper,
+            'comments' => Comment::where('projectId', $id)
+            ->latest()->get()
+        ]);
     }
 
     public function updatePaper(Request $request)
     {
-        // Logic for the updatePaper route
+        $request->validate([
+            'name' => 'required',
+        ]);
+        Paper::findOrFail($request->id)->update([
+            'name' => $request->name,
+            'github' => $request->github,
+            'scholar' => $request->scholar,
+            'bio' => $request->bio,
+            'contributors' => $request->contributors,
+        ]);
+
+        return redirect()->back();
     }
+
 
     public function deletePaper($id)
     {
-        // Logic for the deletePaper route
+        Paper::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'paper Deleted successfuly',
+            'alert-type' => 'warning'
+        );
+
+        return redirect()->back()->with($notification);
     }
 }
